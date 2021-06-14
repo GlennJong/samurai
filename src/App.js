@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { useWordingLoader, _w } from './utils/wordingSystem';
 
-function App() {
+import appStore from './store/app';
+
+import GlobalStyle from './components/GlobalStyle';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+
+const reducer = combineReducers({
+  app: appStore.reducer
+});
+
+const store = createStore(reducer);
+
+const App = ({ wording, Router = BrowserRouter }) => {
+  const wordingLoaded = useWordingLoader(wording ?? '/wordings/main.json');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Helmet>
+        <title>SAMURAI PUNK</title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet"></link>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet"></link>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet"></link>
+      </Helmet>
+      <GlobalStyle/>
+      <Router>
+        { !wordingLoaded &&
+          <div>網站內容準備中，請稍候</div>
+        }
+        { wordingLoaded &&
+          <>
+            <Header />
+            <Switch>  
+              <Route path="/" exact={true} component={HomePage} />
+            </Switch>
+            <Footer />
+          </>
+        }
+      
+      </Router>
+    </Provider>
   );
 }
 

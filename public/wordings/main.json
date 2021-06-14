@@ -1,0 +1,39 @@
+{
+    "homepage": {
+        "heading": {},
+        "intro": {},
+        "news": {},
+        "card": {},
+        "description": {},
+        "wall": {},
+        "purchase": {},
+        "about": {}
+    },
+    "header": {
+        "links": [
+            { "to": "gallery", "title": "GALLERY"},
+            { "to": "social-class", "title": "SOCIAL CLASS" },
+            { "to": "buy", "title": "BUY"},
+            { "to": "my-samurai", "title": "MY SAMURAI"},
+            { "to": "road-map", "title": "ROAD MAP"},
+            { "to": "about-us", "title": "ABOUT US"}
+        ],
+        "socials": [
+            { "icon": "Medium", "link": "" },
+            { "icon": "Discord", "link": "" },
+            { "icon": "Twitter", "link": "" }
+        ]
+    },
+    "footer": {
+        "tel": "TEL : 02 2707 7121",
+        "email": "MAIL : 1234@gmail.com",
+        "copyright": "Copyright © 2021投募達集募資顧問有限公司, All rights reserved"
+    },
+    "common": {
+        "asc_full": "舊到新",
+        "asc_part": "舊",
+        "desc_full": "新到舊",
+        "desc_part": "新"
+    }
+
+}
