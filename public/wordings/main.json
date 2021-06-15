@@ -1,11 +1,29 @@
 {
     "homepage": {
         "heading": {},
-        "intro": {},
-        "news": {},
-        "card": {},
+        "intro": {
+            "dialog1": {
+                "title": "Oops!",
+                "content": "Did you just click the button? "
+            },
+            "dialog2": "You probably have sent all the Cryptopunks back to ancient Japan.",
+            "dialog3": "Get on our first-ever blockchain time machine and meet the Samurai punks!",
+            "cover": "/images/homepage-intro-mask.png",
+            "samurai": ["/images/samurai/9.png", "/images/samurai/21.png"]
+        },
+        "news": {
+            "heading": "Join our Samurai Squad and\nfollow up with our latest news.",
+            "banner": ["/images/news/1.png", "/images/news/2.png", "/images/news/3.png"]
+        },
+        "wall": {
+            "title": "Samurai punks is composed of elements with different rarity and power values. ",
+            "subtitle": "And they each carry a story wait to share with you. Check out for more details when you get one.",
+            "samurai": [""]
+        },
+        "card": {
+            "heading": "“May the Samurai be with you!”"
+        },
         "description": {},
-        "wall": {},
         "purchase": {},
         "about": {}
     },

@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
         font-family: 'Noto Sans TC', sans-serif;
+        line-height: 1.5;
     }
     #app {
         display: flex;
@@ -26,6 +27,10 @@ const GlobalStyle = createGlobalStyle`
     }
     dd {
         margin-inline-start: 0;
+    }
+    p {
+        padding: 0;
+        margin: 0;
     }
 
 `
