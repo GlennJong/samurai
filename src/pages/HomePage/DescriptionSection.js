@@ -1,12 +1,57 @@
 import React from 'react';
 import styled from 'styled-components';
+import Img from '../../components/Img';
+import { colors } from '../../constants/colors';
 
-const Section = () => {
+const DescriptionSection = ({ wording, ...props }) => {
   return (
-    <Root></Root>
+    <Root {...props}>
+      <Icon src="/images/icon-lock.svg" />
+      <Content>
+        <p>{ wording.title }</p>
+        <p>{ wording.subtitle }</p>
+      </Content>
+    </Root>
   )
 }
 
-const Root = styled.div``
+const Root = styled.div`
+  position: relative;
+  padding-top: 105px;
+  padding-bottom: 118px;
+  background-color: ${colors.black};
+  z-index: 0;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/homepage-description-background.png');
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+  }
+`
 
-export default Section;
+const Icon = styled(Img)`
+  margin: 0 auto;
+  margin-bottom: 16px;
+  width: 75px;
+`
+
+const Content = styled.div`
+  margin: 0 auto;
+  width: 880px;
+  max-width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: ${colors.white};
+  p + p {
+    margin-top: 60px;
+  }
+`
+
+export default DescriptionSection;

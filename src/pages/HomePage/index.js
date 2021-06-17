@@ -5,6 +5,9 @@ import IntroSection from './IntroSection';
 import NewsSection from './NewsSection';
 import WallSection from './WallSection';
 import CardSection from './CardSection';
+import PurchaseSection from './PurchaseSection';
+import DescriptionSection from './DescriptionSection';
+import AboutSection from './AboutSection';
 import { _w } from '../../utils/wordingSystem';
 
 const HomePage = () => {
@@ -17,6 +20,9 @@ const HomePage = () => {
       <NewsSection wording={wording.news} />
       <WallSection wording={wording.wall} />
       <CardSection wording={wording.card} />
+      <PurchaseSection wording={wording.purchase} />
+      <DescriptionSection wording={wording.description} />
+      <AboutSection wording={wording.about} />
     </Root>
   )
 }

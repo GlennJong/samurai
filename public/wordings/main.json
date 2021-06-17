@@ -21,11 +21,46 @@
             "samurai": [""]
         },
         "card": {
-            "heading": "“May the Samurai be with you!”"
+            "heading": "“May the Samurai be with you!”",
+            "cards": [
+                { "heading": "/images/homepage-card-title-1.png", "background": "#435762", "qty": "/images/homepage-card-qty-400.png", "samurai": ["/images/homepage-card-samurai-1.png", "/images/homepage-card-samurai-2.png","/images/homepage-card-samurai-3.png"] },
+                { "heading": "/images/homepage-card-title-2.png", "background": "#959273", "qty": "/images/homepage-card-qty-400.png", "samurai": ["/images/homepage-card-samurai-4.png"] },
+                { "heading": "/images/homepage-card-title-3.png", "background": "#e5a896", "qty": "/images/homepage-card-qty-400.png", "samurai": ["/images/homepage-card-samurai-5.png"] },
+                { "heading": "/images/homepage-card-title-4.png", "background": "#5f806d", "qty": "/images/homepage-card-qty-400.png", "samurai": ["/images/homepage-card-samurai-6.png"] }
+            ]
         },
-        "description": {},
-        "purchase": {},
-        "about": {}
+        "purchase": {
+            "title": "Chance of drawing each\nclass is varied :",
+            "items": [
+                {"title": "Titan samurai", "percent": 4},
+                {"title": "Noble samurai", "percent": 16},
+                {"title": "General samurai", "percent": 30},
+                {"title": "Ronin samurai", "percent":  50}
+            ],
+            "price": "PRICE",
+            "quantity": "QUANTITY",
+            "purchase": "PURCHASE",
+            "sold": [
+                { "percent": 10, "content": "The Titans will generously grant 5 of their underlings to you on Discord."},
+                { "percent": 20, "content": "The map of power distribution gets unlocked. Check out which Shogunate your Samurai is belonging to."},
+                { "percent": 30, "content": "Time for your Samurai to change different clothes. \nWe enable your samurai \nto change the outfit. \n(Promise that you won’t peek!)"},
+                { "percent": 40, "content": "Online shop is initiated! Come and get some new accessories for your Samurai!"},
+                { "percent": 50, "content": "Yeehaw! Samurai punks has its own game now. Time to check it out."},
+                { "percent": 60, "content": "No more spoiler! Welcome to join our Discord and tell us what you are expecting!"}
+            ]
+        },
+        "description": {
+            "title": "Wars break out from time to time. Check out who’s controlling the country.",
+            "subtitle": "“Honor may not win power, but it wins respect. And respect earns power.”\nFight for your respective Shogunate!"
+        },
+        "about": {
+            "title": "Btw, Samurai punks lives \non the Ethereum blockchain. \nThis project is not affiliated with Larva Labs.",
+            "subtitle": "Samurai_punks is a collection of 10,000 unique digital samurai. In 2021, Cryptopunks accidentally travel back to ancient Japan. They belong to different classes, and own various power value, with their legends. ",
+            "article": {
+                "title": "The elements of your \nSamurai may be composed of:",
+                "content": "Scenery: Four seasons of Fuji, Hokkaido, Kyoto, Tokyo, Osaka\nClothes: Bitokoni, Ethariamu, Binansi, Carudano, Rippuru (size S, M, L, XL)\nRace: Human, Zombie, Ape, Alien\nEyes: Slanted eyes, Red eyes, Small eyes, Geisha eyes, Alien eyes\nHats and hairstyles: Bandana, Bamboo hat, Purple Cap, Green cap, Beanie, Hoodie, Knitted cap, Mohawk Hairstyle, Long hair, Big beard\nAccessories: Ethereum earring, Tongue out, Pipe, 3D Glasses, VR, Nerd Glasses, Glasses with chain\nPersona: it might be a quote, an accomplishment, or a secret that no one else knows\n\n(Note that there are more additional surprises to be unlocked!)"
+            }
+        }
     },
     "header": {
         "links": [

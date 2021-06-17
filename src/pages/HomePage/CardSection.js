@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from '../../components/Img';
+import CardItem from '../../components/CardItem';
 import { colors } from '../../constants/colors';
 import { nl2br } from '../../utils/wordingSystem';
 
@@ -13,22 +14,17 @@ const CardSection = ({ wording, ...props }) => {
         <div className="title">{ nl2br(wording.heading) }</div>
       </Heading>
       <CardWrapper>
-        <BigCard></BigCard>
-        <SmallCardWrap>
-          <SmallCardItem />
-        </SmallCardWrap>
+        { wording.cards.map((card, i) =>
+          <CardItem key={i} size={i===0 ? 'lg' : 'sm'} data={card} />
+        ) }
       </CardWrapper>
     </Root>
   )
 }
 
-const SmallCardItem = () => {
-  return (
-    <div></div>
-  )
-}
+const Root = styled.div`
 
-const Root = styled.div``
+`
 
 const Heading = styled.div`
   position: relative;
@@ -57,13 +53,14 @@ const Cloud = styled(Img)`
 `
 
 const CardWrapper = styled.div`
-  
+  display: flex;
+  flex-wrap: wrap;
 `
 
 const BigCard = styled.div`
 `
 
-const SmallCardWrap = styled.div`
+const SmallCard = styled.div`
   
 `
 
