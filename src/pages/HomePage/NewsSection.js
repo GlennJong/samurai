@@ -4,6 +4,7 @@ import Img from '../../components/Img';
 import Carousel from '../../components/Carousel';
 import { colors } from '../../constants/colors';
 import { nl2br } from '../../utils/wordingSystem';
+import { respondTo } from '../../utils/responsive';
 
 const Section = ({ wording, ...props }) => {
   return (
@@ -40,16 +41,29 @@ const Heading = styled.div`
     &.-left {
       left: -30%;
       bottom: -70%;
+      ${respondTo.md} {
+        bottom: -30%;
+      }
     }
     &.-right {
       right: -30%;
       top: -70%;
+      ${respondTo.md} {
+        top: -30%;
+      }
     }
+  }
+  ${respondTo.md} {
+    padding: 80px 0;
+    font-size: 18px;
   }
 `
 const Cloud = styled(Img)`
-  width: 60%;
+  width: 70%;
   height: auto;
+  ${respondTo.md} {
+    
+  }
 `
 
 

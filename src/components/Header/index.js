@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-import AutoScrollHelper from './AutoScrollHelper';
+import AutoScrollHelper from '../AutoScrollHelper';
 import LinksList from './LinksList';
 import SocialsList from './SocialsList';
 import { MenuBurger, Close } from '../Icons';
@@ -44,8 +44,8 @@ const Header = () => {
     setOpen(false);
   }
 
-  const handleOpenLinksMenu = () => {
-    setOpen(true);
+  const handleToggleLinksMenu = () => {
+    setOpen(!open);
   }
 
   useEffect(() => {
@@ -58,26 +58,23 @@ const Header = () => {
       <AutoScrollHelper />
       <Fixeder ref={fixederRef}>
         <Wrapper>
-          <Link className="logo" to="/"><img src="/images/header-logo.png" alt=""/></Link>
+          <Link className="logo" to="/?to=heading"><img src="/images/header-logo.png" alt=""/></Link>
           <MenuWrapper className="menu" open={open}>
             <LinksList data={wording.links} onLinkClick={handleCloseLinksMenu} />
             <SocialsList data={wording.socials} />
           </MenuWrapper>
-          <CloseMenuButton show={open} onClick={handleCloseLinksMenu}><Close className="icon" /></CloseMenuButton>
-          <MenuButton onClick={handleOpenLinksMenu}><MenuBurger /></MenuButton>
+          <MenuButton open={open} onClick={handleToggleLinksMenu}>
+            <div></div>
+            <div></div>
+            <div></div>
+          </MenuButton>
         </Wrapper>
-        { open && <Mask onClick={handleCloseLinksMenu} /> }
       </Fixeder>
     </Root>
   )
 }
 
 const Root = styled.header`
-  height: 72px;
-  background: ${colors.black};
-  ${respondTo.md} {
-    height: 48px;
-  }
 `
 
 const Fixeder = styled.div`
@@ -102,19 +99,25 @@ const Wrapper = styled.div`
     padding: 0;
   }
   .logo {
+    position: relative;
     display: block;
     width: 197px;
+    z-index: 3;
     img {
       width: 100%;
       height: auto;
     }
     ${respondTo.md} {
-      margin-left: 24px;
-      height: 20px;
+      margin-top: 4px;
+      margin-left: 10px;
+      width: 190px;
     }
   }
   .menu {
-    width: calc(100% - 340px);
+    width: 75vw;
+    ${respondTo.md} {
+      width: 100vw;
+    }
   }
 `
 
@@ -141,42 +144,29 @@ const MenuWrapper = styled.div`
   }
 `
 
-
-const CloseMenuButton = styled.button`
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 72px;
-  height: 48px;
-  border: 0;
-  background: ${colors.red};
-  color: ${colors.black};
-  z-index: 2;
-
-  ${ respondTo.md } {
-    display: block;
-    opacity: 0;
-    visibility: hidden;
-    transition: all .3s ease;
-    ${({show}) => show && css`
-      opacity: 1;
-      visibility: visible;
-    `}
-  }
-  > .icon {
-    width: 20px;
-    height: auto;
-  }
-`
-
 const MenuButton = styled.button`
   display: none;
   border: 0;
   width: 72px;
   height: 48px;
-  background: ${colors.red};
-  color: ${colors.black};
+  background: transparent;
+  z-index: 2;
+  > div {
+    border-radius: 12px;
+    margin: auto;
+    width: 27px;
+    height: 5px;
+    background: ${colors.white};
+    transition: all .3s ease;
+    & + div {
+      margin-top: 4px;
+    }
+    ${({open}) => open && css`
+      &:first-child { transform: translateY(9px) rotate(45deg);}
+      &:nth-child(2) { opacity: 0; }
+      &:last-child { transform: translateY(-9px) rotate(-45deg);}
+    `}
+  }
   ${ respondTo.md } {
     display: block;
   }

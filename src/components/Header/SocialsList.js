@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { respondTo } from '../../utils/responsive';
 import { Twitter, Medium, Discord } from '../Icons';
 
 const SocialList = ({ data, ...props }) => {
@@ -24,10 +25,17 @@ const SocialItem = ({icon, ...props}) => {
 
 const List = styled.div`
   display: flex;
+  ${respondTo.md} {
+    margin-top: 80px;
+    justify-content: center;
+  }
 `
 const Item = styled.a`
   display: block;
   margin-left: 24px;
+  &:first-child {
+    margin: 0;
+  }
 `
 
 export default SocialList;

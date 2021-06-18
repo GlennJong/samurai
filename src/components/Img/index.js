@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Img = ({ src='', alt='', ...props}) => {
+const Img = ({ fill='width', src='', alt='', ...props}) => {
   return (
-    <Root {...props}>
+    <Root fill={fill} {...props}>
       <img src={src} alt={alt} />
     </Root>
   )
@@ -12,8 +12,24 @@ const Img = ({ src='', alt='', ...props}) => {
 const Root = styled.div`
   img {
     display: block;
-    width: 100%;
-    height: auto;
+    ${({fill}) => fill === 'width' && `
+      width: 100%;
+      height: auto;
+    `}
+    ${({fill}) => fill === 'height' && `
+      width: auto;
+      height: 100%;
+    `}
+    ${({fill}) => fill === 'cover' && `
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    `}
+    ${({fill}) => fill === 'contain' && `
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    `}
   }
 `
 

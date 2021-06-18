@@ -4,6 +4,7 @@ import Img from '../../components/Img';
 import CardItem from '../../components/CardItem';
 import { colors } from '../../constants/colors';
 import { nl2br } from '../../utils/wordingSystem';
+import { respondTo } from '../../utils/responsive';
 
 const CardSection = ({ wording, ...props }) => {
   return (
@@ -35,33 +36,37 @@ const Heading = styled.div`
   color: ${colors.white};
   background-color: ${colors.black};
   overflow: hidden;
+  ${respondTo.md} {
+    padding: 90px 0;
+    font-size: 18px;
+  }
   .cloud {
     position: absolute;
     &.-left {
       left: -30%;
       bottom: -70%;
+      ${respondTo.md} {
+        bottom: -20%;
+      }
     }
     &.-right {
       right: -30%;
       top: -70%;
+      ${respondTo.md} {
+        top: -20%;
+      }
     }
   }
 `
 const Cloud = styled(Img)`
-  width: 60%;
+  width: 70%;
   height: auto;
 `
 
 const CardWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-`
-
-const BigCard = styled.div`
-`
-
-const SmallCard = styled.div`
-  
 `
 
 export default CardSection;

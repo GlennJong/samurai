@@ -1,10 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
+import { colors } from '../../constants/colors';
 
 const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
         font-family: 'Noto Sans TC', sans-serif;
         line-height: 1.5;
+        background: ${colors.black};
     }
     #app {
         display: flex;

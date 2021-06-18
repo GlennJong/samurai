@@ -53,13 +53,14 @@ const Carousel = ({ className='', children }) => {
 const Root = styled.div`
   position: relative;
   .slick-dots {
-    background: ${colors.black};
-    ${'' /* position: absolute; */}
-    ${'' /* bottom: 0; */}
-    ${'' /* left: 50%; */}
-    ${'' /* transform: translateX(-50%); */}
-    button {
-      background: ${colors.white};
+    position: relative;
+    bottom: 0;
+    z-index: 1;
+    button:before {
+      color: ${colors.white};
+    }
+    .slick-active button:before {
+      color: ${colors.white};
     }
   }
 `

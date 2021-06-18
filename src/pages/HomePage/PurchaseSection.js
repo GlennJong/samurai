@@ -1,20 +1,39 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useRef, useState } from 'react';
+import styled, { css } from 'styled-components';
 import Img from '../../components/Img';
 import { colors } from '../../constants/colors';
 import { nl2br } from '../../utils/wordingSystem';
 import { Plus, Minus } from '../../components/Icons';
+import useIntersectionObserver from '../../utils/useIntersectionObserver';
+import { detectMob } from '../../utils/methods';
+import { respondTo } from '../../utils/responsive';
 
-const Section = ({ wording, ...props }) => {
-  const [ qty, setQty ] = useState(0);
+const PurchaseSection = ({ wording, ...props }) => {
+  const [ qty, setQty ] = useState(1);
+  const [ active, setActive ] = useState(false);
+  const soldWrapperRef = useRef(null);
+  useIntersectionObserver(soldWrapperRef, handleActiveAnimation, {
+    root: null,
+    rootMargin: '0px  0px -200px 0px',
+    threshold: 0
+  });
+
+  function handleActiveAnimation(e) {
+    if (e[0].isIntersecting && !detectMob()) {
+      setActive(true);
+    }
+    else {
+      setActive(false);
+    }
+  }
 
   function handleAddQty() {
-    let currentQty = Math.max(qty+1, 0);
+    let currentQty = Math.max(qty+1, 1);
     setQty(currentQty);
   }
 
   function handleDecreaseQty() {
-    let currentQty = Math.max(qty-1, 0);
+    let currentQty = Math.max(qty-1, 1);
     setQty(currentQty);
   }
   
@@ -51,9 +70,9 @@ const Section = ({ wording, ...props }) => {
           </Purchase>
         </Container>
       </BuyWrapper>
-      <SoldWrapper>
+      <SoldWrapper ref={soldWrapperRef}>
         <Container>
-          <SoldList>
+          <SoldList active={active}>
             { wording.sold.map((item, i) =>
               <SoldItem key={i}>
                 <div className="percent">
@@ -65,6 +84,7 @@ const Section = ({ wording, ...props }) => {
             ) }
           </SoldList>
         </Container>
+        <SideSamurai active={active} src="/images/home-purchase-samurai.png" />
       </SoldWrapper>
     </Root>
   )
@@ -73,9 +93,9 @@ const Section = ({ wording, ...props }) => {
 const QtySelector = ({ qty, onPlusClick, onMinusClick }) => {
   return (
     <Selector>
-      <button onClick={onMinusClick}><Minus /></button>
+      <QtyButton disabled={qty <= 1} onClick={onMinusClick}><Minus /></QtyButton>
       <p className="qty">{ qty }</p>
-      <button onClick={onPlusClick}><Plus /></button>
+      <QtyButton disabled={false} onClick={onPlusClick}><Plus /></QtyButton>
     </Selector>
   )
 }
@@ -89,6 +109,10 @@ const Container = styled.div`
   display: flex;
   margin: 0 auto;
   width: 980px;
+  max-width: 100%;
+  ${respondTo.md} {
+    display: block;
+  }
 `
 const BuyWrapper = styled.div`
   position: relative;
@@ -96,6 +120,12 @@ const BuyWrapper = styled.div`
   padding-bottom: 280px;
   z-index: 0;
   overflow: hidden;
+  ${respondTo.md} {
+    padding: 0 42px;
+    box-sizing: border-box;
+    padding-top: 110px;
+    padding-bottom: 120px;
+  }
   &:before {
     content: "";
     position: absolute;
@@ -105,7 +135,14 @@ const BuyWrapper = styled.div`
     height: 420px;
     background-image: url('/images/cloud-1.png');
     background-size: contain;
+    background-repeat: no-repeat;
     z-index: -1;
+    ${respondTo.md} {
+      top: 0;
+      right: -40%;
+      width: 350px;
+      height: 300px;
+    }
   }
   &:after {
     content: "";
@@ -116,12 +153,25 @@ const BuyWrapper = styled.div`
     height: 420px;
     background-image: url('/images/cloud-1.png');
     background-size: contain;
+    background-repeat: no-repeat;
     z-index: -1;
+    ${respondTo.md} {
+      bottom: auto;
+      top: 34%;
+      left: -40%;
+      width: 350px;
+      height: 300px;
+      transform: scaleX(-1);
+    }
   }
 `
 
 const Cover = styled(Img)`
   width: 55%;
+  ${respondTo.md} {
+    margin-bottom: 60px;
+    width: 100%;
+  }
 `
 
 const Purchase = styled.div`
@@ -129,6 +179,10 @@ const Purchase = styled.div`
   width: 45%;
   color: ${colors.white};
   box-sizing: border-box;
+  ${respondTo.md} {
+    padding-left: 0;
+    width: 100%;
+  }
   .logo {
     margin-bottom: 6px;
   }
@@ -188,27 +242,18 @@ const BuyButton = styled.button`
   margin-top: 72px;
   width: 180px;
   height: 60px;
+  border: 1px solid ${colors.white};
   background: ${colors.white};
   color: ${colors.black};
   font-size: 20px;
   font-weight: 900;
+  &:active {
+    background: transparent;
+    color: ${colors.white};
+  }
 `
 const Selector = styled.div`
   display: flex;
-  button {
-    border: 1px solid ${colors.white};
-    padding: 0;
-    width: 32px;
-    height: 32px;
-    background: transparent;
-    line-height: 1;
-    font-size: 12px;
-    color: ${colors.white};
-    &:hover {
-      background: ${colors.white};
-      color: ${colors.black};
-    }
-  }
   .qty {
     border-top: 1px solid ${colors.white};
     border-bottom: 1px solid ${colors.white};
@@ -221,6 +266,21 @@ const Selector = styled.div`
   }
 `
 
+const QtyButton = styled.button`
+  border: 1px solid ${colors.white};
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  line-height: 1;
+  font-size: 12px;
+  background: ${colors.white};
+  color: ${colors.black};
+  &:disabled {
+    background: transparent;
+    color: ${colors.white};
+  }
+`
+
 const SoldWrapper = styled.div`
   position: relative;
   padding-bottom: 100px;
@@ -230,6 +290,12 @@ const SoldWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: 640px;
   overflow: hidden;
+  ${respondTo.md} {
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background-size: 80%;
+  }
   &:before {
     content: "";
     position: absolute;
@@ -239,29 +305,61 @@ const SoldWrapper = styled.div`
     height: 420px;
     background-image: url('/images/cloud-1.png');
     background-size: contain;
+    background-repeat: no-repeat;
     z-index: -1;
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 600px;
-    height: 600px;
-    background-image: url('/images/home-purchase-samurai.png');
-    background-size: contain;
-    z-index: -1;
+    ${respondTo.md} {
+      display: none;
+    }
   }
 `
+const SideSamurai = styled(Img)`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 600px;
+  opacity: 0;
+  transform: translateX(50%);
+  transition: all 1s ease .3s;
+  ${({ active }) => active && css`
+    opacity: 1;
+    transform: translateX(0);
+  `}
+  ${respondTo.md} {
+    position: relative;
+    margin-left: auto;
+    width: 80%;
+    opacity: 1;
+    transform: translateX(20px);
+  }
+`
+
 const SoldList = styled.div`
   width: 360px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease .3s;
+  ${({ active }) => active && css`
+    opacity: 1;
+    transform: translateY(0);
+  `}
+  ${respondTo.md} {
+    width: 100%;
+    opacity: 1;
+    transform: translateX(0);
+  }
 `
 const SoldItem = styled.div`
   display: flex;
   margin-bottom: 24px;
   color: ${colors.white};
+  ${respondTo.md} {
+    margin-bottom: 20px;
+  }
   .percent {
     margin-right: 24px;
+    ${respondTo.md} {
+      margin-right: 10px;
+    }
     .value {
       white-space: nowrap;
       span:first-child {
@@ -291,4 +389,4 @@ const SoldItem = styled.div`
   }
 `
 
-export default Section;
+export default PurchaseSection;

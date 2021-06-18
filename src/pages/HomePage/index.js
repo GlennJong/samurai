@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import HeadingSection from './HeadingSection';
 import IntroSection from './IntroSection';
 import NewsSection from './NewsSection';
-import WallSection from './WallSection';
+import StorySection from './StorySection';
+import GallerySection from './GallerySection';
 import CardSection from './CardSection';
 import PurchaseSection from './PurchaseSection';
 import DescriptionSection from './DescriptionSection';
@@ -15,14 +16,15 @@ const HomePage = () => {
   
   return (
     <Root>
-      <HeadingSection />
-      <IntroSection wording={wording.intro} />
-      <NewsSection wording={wording.news} />
-      <WallSection wording={wording.wall} />
-      <CardSection wording={wording.card} />
-      <PurchaseSection wording={wording.purchase} />
-      <DescriptionSection wording={wording.description} />
-      <AboutSection wording={wording.about} />
+      <HeadingSection id="heading" />
+      <IntroSection id="intro" wording={wording.intro} />
+      <NewsSection id="news" wording={wording.news} />
+      <StorySection id="story" wording={wording.story} />
+      <GallerySection id="gallery" wording={wording.gallery} />
+      <CardSection id="card" wording={wording.card} />
+      <PurchaseSection id="purchase" wording={wording.purchase} />
+      <DescriptionSection id="description" wording={wording.description} />
+      <AboutSection id="about" wording={wording.about} />
     </Root>
   )
 }

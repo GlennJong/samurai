@@ -15,18 +15,20 @@
             "heading": "Join our Samurai Squad and\nfollow up with our latest news.",
             "banner": ["/images/news/1.png", "/images/news/2.png", "/images/news/3.png"]
         },
-        "wall": {
+        "story": {
             "title": "Samurai punks is composed of elements with different rarity and power values. ",
-            "subtitle": "And they each carry a story wait to share with you. Check out for more details when you get one.",
+            "subtitle": "And they each carry a story wait to share with you. Check out for more details when you get one."
+        },
+        "gallery": {
             "samurai": [""]
         },
         "card": {
             "heading": "“May the Samurai be with you!”",
             "cards": [
-                { "heading": "/images/homepage-card-title-1.png", "background": "#435762", "qty": "/images/homepage-card-qty-400.png", "samurai": ["/images/homepage-card-samurai-1.png", "/images/homepage-card-samurai-2.png","/images/homepage-card-samurai-3.png"] },
-                { "heading": "/images/homepage-card-title-2.png", "background": "#959273", "qty": "/images/homepage-card-qty-400.png", "samurai": ["/images/homepage-card-samurai-4.png"] },
-                { "heading": "/images/homepage-card-title-3.png", "background": "#e5a896", "qty": "/images/homepage-card-qty-400.png", "samurai": ["/images/homepage-card-samurai-5.png"] },
-                { "heading": "/images/homepage-card-title-4.png", "background": "#5f806d", "qty": "/images/homepage-card-qty-400.png", "samurai": ["/images/homepage-card-samurai-6.png"] }
+                { "heading": "/images/homepage-card-title-1.png", "heading_m": "/images/homepage-card-title-1-mobile.png", "background": "#435762", "qty": "/images/homepage-card-qty-400.png", "samurai": "/images/homepage-card-samurai-titan.png", "samurai_m": "/images/homepage-card-samurai-titan-mobile.png", "content": "“We have no master, no lord. \nNot like the others, we belong to ourselves. It’s not a big deal. Protecting others and upholding justice are our daily lives.”" },
+                { "heading": "/images/homepage-card-title-3.png", "heading_m": "/images/homepage-card-title-3-mobile.png", "background": "#959273", "qty": "/images/homepage-card-qty-5000.png", "samurai": "/images/homepage-card-samurai-ronine.png", "samurai_m": "/images/homepage-card-samurai-ronin.png", "content": "“Only Samurai Aliens, Apes, and Zombies like us can be the leader of the military. All of the human beings are under our domination.”" },
+                { "heading": "/images/homepage-card-title-2.png", "heading_m": "/images/homepage-card-title-2-mobile.png", "background": "#e5a896", "qty": "/images/homepage-card-qty-3000.png", "samurai": "/images/homepage-card-samurai-general.png", "samurai_m": "/images/homepage-card-samurai-general.png", "content": "“In fighting and in everyday life, we should be determined though calm. Be loyal to the Nobels and be their respected warriors.”" },
+                { "heading": "/images/homepage-card-title-4.png", "heading_m": "/images/homepage-card-title-4-mobile.png", "background": "#5f806d", "qty": "/images/homepage-card-qty-1600.png", "samurai": "/images/homepage-card-samurai-noble.png", "samurai_m": "/images/homepage-card-samurai-noble.png", "content": "“With great power and wealth, we get to stand on the top of human beings and, most importantly, stay close with the Titans. Your Highness, it’s our honor to dress you around.”" }
             ]
         },
         "purchase": {
@@ -64,12 +66,12 @@
     },
     "header": {
         "links": [
-            { "to": "gallery", "title": "GALLERY"},
-            { "to": "social-class", "title": "SOCIAL CLASS" },
-            { "to": "buy", "title": "BUY"},
-            { "to": "my-samurai", "title": "MY SAMURAI"},
-            { "to": "road-map", "title": "ROAD MAP"},
-            { "to": "about-us", "title": "ABOUT US"}
+            { "to": "/?to=gallery", "title": "GALLERY"},
+            { "to": "/", "title": "SOCIAL CLASS" },
+            { "to": "/?to=purchase", "title": "BUY"},
+            { "to": "/", "title": "MY SAMURAI"},
+            { "to": "/", "title": "ROAD MAP"},
+            { "to": "/?to=about", "title": "ABOUT US"}
         ],
         "socials": [
             { "icon": "Medium", "link": "" },

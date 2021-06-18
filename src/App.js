@@ -39,6 +39,14 @@ const App = ({ wording, Router = BrowserRouter }) => {
             <Header />
             <Switch>  
               <Route path="/" exact={true} component={HomePage} />
+              <Route path="/?to=heading" exact={true} component={HomePage} />
+              <Route path="/?to=intro" exact={true} component={HomePage} />
+              <Route path="/?to=news" exact={true} component={HomePage} />
+              <Route path="/?to=gallery" exact={true} component={HomePage} />
+              <Route path="/?to=card" exact={true} component={HomePage} />
+              <Route path="/?to=purchase" exact={true} component={HomePage} />
+              <Route path="/?to=description" exact={true} component={HomePage} />
+              <Route path="/?to=about" exact={true} component={HomePage} />
             </Switch>
             <Footer />
           </>

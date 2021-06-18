@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { respondTo } from '../../utils/responsive';
-import { colors } from '../../constants/colors';
 
 const LinksList = ({ data, onLinkClick, ...props }) => {
   return (
@@ -16,6 +15,10 @@ const LinksList = ({ data, onLinkClick, ...props }) => {
 
 const List = styled.div`
   display: flex;
+  ${respondTo.md} {
+    display: block;
+    text-align: center;
+  }
 `
 
 const LinkItem = styled(Link)`
@@ -28,6 +31,10 @@ const LinkItem = styled(Link)`
   }
   &:hover {
     ${'' /* color: ${ colors.red }; */}
+  }
+  ${respondTo.md} {
+    margin: 0;
+    font-size: 36px;
   }
 
   ${({ showForMobile }) => showForMobile && css`

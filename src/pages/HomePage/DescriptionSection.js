@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Img from '../../components/Img';
 import { colors } from '../../constants/colors';
+import { respondTo } from '../../utils/responsive';
 
 const DescriptionSection = ({ wording, ...props }) => {
   return (
@@ -21,6 +22,10 @@ const Root = styled.div`
   padding-bottom: 118px;
   background-color: ${colors.black};
   z-index: 0;
+  ${respondTo.md} {
+    padding-top: 60px;
+    padding-bottom: 72px;
+  }
   &:after {
     content: "";
     position: absolute;
@@ -39,6 +44,10 @@ const Icon = styled(Img)`
   margin: 0 auto;
   margin-bottom: 16px;
   width: 75px;
+  ${respondTo.md} {
+    width: 52px;
+    margin-bottom: 25px;
+  }
 `
 
 const Content = styled.div`
@@ -49,8 +58,16 @@ const Content = styled.div`
   font-size: 30px;
   font-weight: 600;
   color: ${colors.white};
+  ${respondTo.md} {
+    padding: 0 32px;
+    font-size: 18px;
+    box-sizing: border-box;
+  }
   p + p {
     margin-top: 60px;
+    ${respondTo.md} {
+      margin-top: 36px;
+    }
   }
 `
 

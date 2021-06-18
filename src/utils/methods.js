@@ -6,6 +6,11 @@ export const zeroTransfer = (num) => {
   return str
 }
 
+export function detectMob() {
+  let check = false;
+  if (window.innerWidth < 760) check = true;
+  return check;
+}
 
 export function applyThousandPoint(value) {
   return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

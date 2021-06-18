@@ -12,12 +12,14 @@ const AutoScrollHelper = () => {
 
   function handleApplyAutoScroll() {
     const { to } = parse(location.search);
-    const element = document.getElementById(to);
-    if (element) {
-      scrollTo(1, element.offsetTop);
-    }
-    else {
-      handleApplyAutoScroll();
+    if (to) {
+      const element = document.getElementById(to);
+      if (element) {
+        scrollTo(3, element.offsetTop);
+      }
+      else {
+        handleApplyAutoScroll();
+      }
     }
   }
   
