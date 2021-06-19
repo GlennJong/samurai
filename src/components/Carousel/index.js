@@ -3,27 +3,13 @@ import Slick from 'react-slick';
 import styled from 'styled-components';
 import { colors } from '../../constants/colors';
 
-// import { Text } from '../TextStyle';
-// import { NextButton, PrevButton } from '../DirectionButton';
-import { respondTo, respondFrom } from '../../utils/responsive';
-
 const Carousel = ({ className='', children }) => {
   const carouselRef = useRef(null);
   const slickSettings = {
     infinite: false,
     arrows: false,
     dots: true,
-    // centerMode: true,
-    // variableWidth: true,
-    // centerPadding: '30px',
-    autoplay: false,
-    // afterChange: current => setCurrentIndex(current+1),
-    // responsive: [
-    //   {
-    //     breakpoint: 768,
-    //     settings: "unslick"
-    //   }
-    // ]
+    autoplay: false
   };
 
   function handleClickArrowButton(e) {

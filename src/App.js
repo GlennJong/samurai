@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { useWordingLoader, _w } from './utils/wordingSystem';
+import { useWordingLoader } from './utils/wordingSystem';
 
 import appStore from './store/app';
 

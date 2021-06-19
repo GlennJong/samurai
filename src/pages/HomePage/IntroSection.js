@@ -4,36 +4,39 @@ import { colors } from '../../constants/colors';
 import Img from '../../components/Img';
 import StickySection from '../../components/StickySection';
 import { respondTo } from '../../utils/responsive';
+import { detectMob } from '../../utils/methods';
+import useIntersectionObserver from '../../utils/useIntersectionObserver';
 
 const IntroSection = ({ wording, ...props }) => {
+  const rootRef = useRef(null);
   const backSamuraiRef = useRef(null);
+  const [ applyScrollWatcher, setApplyScrollWatcher ] = useState(false);
   const [ dialogStep, setDialogStep ] = useState(1);
   const [ backSamurai, setBackSamurai ] = useState(1);
 
-  function handleTriggerDialog(value) {
-    if (value >= 0 && value < 800) {
-      setDialogStep(1);
-    }
-    else if (value >= 800 && value < 1600){
-      setDialogStep(2);
-    }
-    else if (value >= 1600) {
-      setDialogStep(3);
-    }
+  useIntersectionObserver(rootRef, handleActiveScrollWatcher, {
+    root: null,
+    rootMargin: `0%`,
+    threshold: [0]
+  });
+
+  function handleActiveScrollWatcher(e) {
+    setApplyScrollWatcher(e[0].isIntersecting);
   }
 
-  function handleTriggerMask(value) {
-    if (value >= 0 && value < 400) {
-      setBackSamurai(1);
-    }
-    else if (value >= 400) {
-      setBackSamurai(2);
-    }
+  function handleTriggerDialog(step) {
+    setDialogStep(step);
+  }
+
+  function handleTriggerMask(step) {
+    setBackSamurai(step);
   }
 
   return (
-    <Root {...props}>
-      <DialogScreen offsetY={0} onActive={handleTriggerDialog} limit={1800}>
+    <>
+    <Blocker />
+    <Root ref={rootRef} {...props}>
+      <DialogScreen active={applyScrollWatcher} offsetY={0} onMove={handleTriggerDialog} steps={3}>
         <DialogWrapper>
           <DialogItem show={dialogStep === 1}>
             <p className="title">{ wording.dialog1.title }</p>
@@ -49,7 +52,7 @@ const IntroSection = ({ wording, ...props }) => {
         </DialogWrapper>
       </DialogScreen>
       <br />
-      <MaskScreen offsetY={0} onActive={handleTriggerMask} limit={800} enableOnMobile={true}>
+      <MaskScreen active={applyScrollWatcher} offsetY={ detectMob() ? window.innerHeight/3 : 0 } onMove={handleTriggerMask} steps={2} enableOnMobile={true}>
         <Cover src={wording.cover} />
         <BackSamuraiContent ref={backSamuraiRef} index={backSamurai-1}>
           { wording.samurai.map((item, i) =>
@@ -58,8 +61,13 @@ const IntroSection = ({ wording, ...props }) => {
         </BackSamuraiContent>
       </MaskScreen>
     </Root>
+    </>
   )
 }
+
+const Blocker = styled.div`
+  height: 5px;
+`
 
 const Root = styled.div`
   background: ${colors.black};

@@ -36,7 +36,7 @@ const GallerySection = ({ wording, qty=45, ...props }) => {
 
     for (let i = 0; i < currentQty; i++) {
       items.push(
-        <WallItem data-samurai={list[i]} onClick={handleOpenModalBox}>
+        <WallItem key={i} data-samurai={list[i]} onClick={handleOpenModalBox}>
           <Img src={`/images/samurai/${list[i]}.png`} />
           <p>#{ zeroTransfer(list[i]) }</p>
         </WallItem>

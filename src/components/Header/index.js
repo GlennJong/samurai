@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import AutoScrollHelper from '../AutoScrollHelper';
 import LinksList from './LinksList';
 import SocialsList from './SocialsList';
-import { MenuBurger, Close } from '../Icons';
 import { _w } from '../../utils/wordingSystem';
 import { respondTo } from '../../utils/responsive';
 import { lockWindow } from '../../utils/methods';
@@ -114,7 +113,7 @@ const Wrapper = styled.div`
     }
   }
   .menu {
-    width: 75vw;
+    width: 66vw;
     ${respondTo.md} {
       width: 100vw;
     }
@@ -170,15 +169,6 @@ const MenuButton = styled.button`
   ${ respondTo.md } {
     display: block;
   }
-`
-
-const Mask = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
 `
 
 export default Header;

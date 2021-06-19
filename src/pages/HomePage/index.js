@@ -9,6 +9,7 @@ import CardSection from './CardSection';
 import PurchaseSection from './PurchaseSection';
 import DescriptionSection from './DescriptionSection';
 import AboutSection from './AboutSection';
+import CartButton from '../../components/CartButton';
 import { _w } from '../../utils/wordingSystem';
 
 const HomePage = () => {
@@ -25,6 +26,7 @@ const HomePage = () => {
       <PurchaseSection id="purchase" wording={wording.purchase} />
       <DescriptionSection id="description" wording={wording.description} />
       <AboutSection id="about" wording={wording.about} />
+      <CartButton />
     </Root>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { colors } from '../../constants/colors';
 import { respondTo } from '../../utils/responsive';
 import Img from '../Img';
@@ -214,7 +214,7 @@ const SamuraiItem = styled(Img)`
   bottom: -10px;
   z-index: ${({ length, index }) => (index-length)*-1 };
   ${respondTo.md} {
-    width: 100%;
+    display: none;
   }
 `
 
@@ -224,6 +224,7 @@ const SamuraiItemMirror = styled(SamuraiItem)`
 
 const SamuraiItemMobile = styled(SamuraiItem)`
   display: none;
+  width: 100%;
   ${respondTo.md} {
     display: inline-block;
   }

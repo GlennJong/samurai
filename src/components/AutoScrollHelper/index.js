@@ -15,7 +15,7 @@ const AutoScrollHelper = () => {
     if (to) {
       const element = document.getElementById(to);
       if (element) {
-        scrollTo(3, element.offsetTop);
+        scrollTo(2, element.offsetTop);
       }
       else {
         handleApplyAutoScroll();
