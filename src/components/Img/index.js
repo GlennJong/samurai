@@ -26,7 +26,7 @@ const Root = styled.div`
       height: 100%;
     `}
     ${({fill}) => fill === 'contain' && `
-      object-fit: cover;
+      object-fit: contain;
       width: 100%;
       height: 100%;
     `}

@@ -6,10 +6,11 @@ import { colors } from '../../constants/colors';
 const Carousel = ({ className='', children }) => {
   const carouselRef = useRef(null);
   const slickSettings = {
-    infinite: false,
+    infinite: true,
     arrows: false,
     dots: true,
-    autoplay: false
+    autoplay: true,
+    autoplaySpeed: 6000,
   };
 
   function handleClickArrowButton(e) {

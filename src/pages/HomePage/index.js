@@ -23,7 +23,7 @@ const HomePage = () => {
       <StorySection id="story" wording={wording.story} />
       <GallerySection id="gallery" wording={wording.gallery} />
       <CardSection id="card" wording={wording.card} />
-      <PurchaseSection id="purchase" wording={wording.purchase} />
+      <PurchaseSection wording={wording.purchase} />
       <DescriptionSection id="description" wording={wording.description} />
       <AboutSection id="about" wording={wording.about} />
       <CartButton />

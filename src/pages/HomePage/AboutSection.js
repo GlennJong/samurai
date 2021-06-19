@@ -5,6 +5,7 @@ import { colors } from '../../constants/colors';
 import { nl2br } from '../../utils/wordingSystem';
 import { Twitter, Medium, Discord } from '../../components/Icons';
 import { respondTo } from '../../utils/responsive';
+import SocialsList from '../../components/SocialList';
 
 const AboutSection = ({ wording, ...props }) => {
   return (
@@ -32,9 +33,7 @@ const AboutSection = ({ wording, ...props }) => {
           </div>
           <div className="link">
             <p>MEET THE TEAM</p>
-            <a href=""><Medium /></a>
-            <a href=""><Discord /></a>
-            <a href=""><Twitter /></a>
+            <SocialsList data={wording.socials} />
           </div>
         </Contact>
       </Container>
@@ -64,7 +63,7 @@ const Background = styled(Img)`
     top: 40%;
     left: -32%;
     ${respondTo.md} {
-      top: 20%;
+      top: 500px;
       left: -55%;
       width: 400px;
     }
@@ -74,7 +73,7 @@ const Background = styled(Img)`
     top: 50%;
     right: -10%;
     ${respondTo.md} {
-      top: 20%;
+      top: 500px;
       right: -10%;
       width: 200px;
     }
@@ -131,7 +130,6 @@ const Article = styled.div`
   font-weight: 600;
   ${respondTo.md} {
     margin-bottom: 100px;
-    text-align: center;
   }
   .title {
     margin-bottom: 60px;
@@ -143,6 +141,12 @@ const Article = styled.div`
   }
   .content {
     font-size: 18px;
+    br:nth-child(2n) {
+      display: none;
+      ${respondTo.md} {
+        display: block;
+      }
+    }
   }
 
 `

@@ -14,7 +14,7 @@ const CardSection = ({ wording, ...props }) => {
         <Cloud className="cloud -left" src="/images/homepage-news-cloud-2.png" />
         <div className="title">{ nl2br(wording.heading) }</div>
       </Heading>
-      <CardWrapper>
+      <CardWrapper id="social-class">
         { wording.cards.map((card, i) =>
           <CardItem key={i} size={i===0 ? 'lg' : 'sm'} data={card} />
         ) }
@@ -66,6 +66,7 @@ const Cloud = styled(Img)`
 const CardWrapper = styled.div`
   position: relative;
   display: flex;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
 `
 

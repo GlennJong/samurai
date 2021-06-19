@@ -21,6 +21,7 @@ const IntroSection = ({ wording, ...props }) => {
   });
 
   function handleActiveScrollWatcher(e) {
+    console.log(e[0].isIntersecting)
     setApplyScrollWatcher(e[0].isIntersecting);
   }
 
@@ -53,12 +54,14 @@ const IntroSection = ({ wording, ...props }) => {
       </DialogScreen>
       <br />
       <MaskScreen active={applyScrollWatcher} offsetY={ detectMob() ? window.innerHeight/3 : 0 } onMove={handleTriggerMask} steps={2} enableOnMobile={true}>
-        <Cover src={wording.cover} />
-        <BackSamuraiContent ref={backSamuraiRef} index={backSamurai-1}>
-          { wording.samurai.map((item, i) =>
-            <BackItem key={i} src={item} />
-          ) }
-        </BackSamuraiContent>
+        <MaskWrapper>
+          <Cover src={wording.cover}></Cover>
+          <BackSamuraiContent ref={backSamuraiRef} index={backSamurai-1}>
+            { wording.samurai.map((item, i) =>
+              <BackItem key={i} src={item} />
+            ) }
+          </BackSamuraiContent>
+        </MaskWrapper>
       </MaskScreen>
     </Root>
     </>
@@ -76,10 +79,10 @@ const Root = styled.div`
 const DialogScreen = styled(StickySection)`
   position: relative;
   padding-top: 160px;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
   ${respondTo.md} {
     padding-top: 100px;
-    padding-bottom: 120px;
+    padding-bottom: 60px;
   }
 `
 
@@ -159,14 +162,18 @@ const DialogItem = styled.div`
   }
 `
 const MaskScreen = styled(StickySection)`
+  padding-top: 100px;
+  ${respondTo.md} {
+    padding-top: 60px;
+  }
+`
+
+const MaskWrapper = styled.div`
   position: relative;
   overflow-y: hidden;
   z-index: 0;
-  ${respondTo.md} {
-    margin-left: -18%;
-    margin-right: -18%;
-  }
 `
+
 const Cover = styled(Img)`
 `
 const BackSamuraiContent = styled.div`

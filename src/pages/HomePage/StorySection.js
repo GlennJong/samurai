@@ -27,15 +27,15 @@ const StorySection = ({ wording, ...props }) => {
     <Root {...props}>
       <Wrapper>
         <DecorationList ref={decorationRef}>
-          <DecorationItem active={active} bottom={-10} right={20} to={`40px, 80px`} src="/images/homepage-wall-1.png" />
-          <DecorationItem active={active} left={-5} top={30} to={`-80px, -30px`} src="/images/homepage-wall-2.png" />
-          <DecorationItem active={active} right={-5} top={30} to={`60px, 15px`} src="/images/homepage-wall-3.png" />
-          <DecorationItem active={active} left={-3} top={45} to={`-80px, 15px`} src="/images/homepage-wall-4.png" />
-          <DecorationItem active={active} right={3} bottom={10} to={`60px, 60px`} src="/images/homepage-wall-5.png" />
-          <DecorationItem active={active} left={10} bottom={-3} to={`-90px, 60px`} src="/images/homepage-wall-6.png" />
-          <DecorationItem active={active} left={35} top={2} to={`0px, -60px`} src="/images/homepage-wall-7.png" />
-          <DecorationItem active={active} left={1} top={1} to={`-60px, -15px`} src="/images/homepage-wall-8.png" />
-          <DecorationItem active={active} right={1} top={-3} to={`80px, -20px`} src="/images/homepage-wall-9.png" />
+          <DecorationItem active={active} bottom={-10} right={20} to={`50px, 100px`} src="/images/homepage-wall-1.png" />
+          <DecorationItem active={active} left={-5} top={30} to={`-100px, -50px`} src="/images/homepage-wall-2.png" />
+          <DecorationItem active={active} right={-5} top={30} to={`80px, 20px`} src="/images/homepage-wall-3.png" />
+          <DecorationItem active={active} left={-3} top={45} to={`-100px, 25px`} src="/images/homepage-wall-4.png" />
+          <DecorationItem active={active} right={3} bottom={10} to={`80px, 80px`} src="/images/homepage-wall-5.png" />
+          <DecorationItem active={active} left={10} bottom={-3} to={`-120px, 90px`} src="/images/homepage-wall-6.png" />
+          <DecorationItem active={active} left={35} top={2} to={`0px, -80px`} src="/images/homepage-wall-7.png" />
+          <DecorationItem active={active} left={1} top={1} to={`-80px, -30px`} src="/images/homepage-wall-8.png" />
+          <DecorationItem active={active} right={1} top={-3} to={`120px, -40px`} src="/images/homepage-wall-9.png" />
         </DecorationList>
         <DecorationGroup src="/images/homepage-wall-mobile-1.png" />
         <Title>{ wording.title }</Title>
@@ -95,8 +95,8 @@ const DecorationItem = styled(Img)`
   position: absolute;
   width: 450px;
   opacity: 0;
-  transition: transform 3s ease,
-              opacity 3s ease;
+  transition: transform 1s ease,
+              opacity 1s ease;
   ${({ to }) => to && css`transform: translate(${to});`}
   ${({ active }) => active && css`
     opacity: 1;

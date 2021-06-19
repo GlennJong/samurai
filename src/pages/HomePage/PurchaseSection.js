@@ -39,7 +39,7 @@ const PurchaseSection = ({ wording, ...props }) => {
   
   return (
     <Root {...props}>
-      <BuyWrapper>
+      <BuyWrapper id="purchase">
         <Container>
           <Cover src="/images/homepage-purchase-cover.png" />
           <Purchase>
@@ -49,15 +49,15 @@ const PurchaseSection = ({ wording, ...props }) => {
               <p className="info" key={i}>{item.title} : {item.percent}%</p>
             ) }
             <Price>
-              <div className="title">{wording.price}</div>
+              <div className="title">PRICE</div>
               <div className="amount">
                 <Img className="icon" src="/images/icon-coin.svg" />
-                <p className="price">0.03</p>
-                <p className="hint">($115.77)</p>
+                <p className="price">{ (wording.price * qty).toFixed(2) }</p>
+                {/* <p className="hint">($115.77)</p> */}
               </div>
             </Price>
             <Qty>
-              <div className="title">{wording.quantity}</div>
+              <div className="title">QUANTITY</div>
               <div className="buy">
                 <QtySelector qty={qty} 
                   onPlusClick={handleAddQty}
@@ -66,11 +66,11 @@ const PurchaseSection = ({ wording, ...props }) => {
                 <p className="hint">9999 REMAINING</p>
               </div>
             </Qty>
-            <BuyButton>{wording.purchase}</BuyButton>
+            <BuyButton>PURCHASE</BuyButton>
           </Purchase>
         </Container>
       </BuyWrapper>
-      <SoldWrapper ref={soldWrapperRef}>
+      <SoldWrapper ref={soldWrapperRef} id="road-map">
         <Container>
           <SoldList active={active}>
             { wording.sold.map((item, i) =>

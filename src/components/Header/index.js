@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import AutoScrollHelper from '../AutoScrollHelper';
 import LinksList from './LinksList';
-import SocialsList from './SocialsList';
+import SocialList from '../SocialList';
 import { _w } from '../../utils/wordingSystem';
 import { respondTo } from '../../utils/responsive';
 import { lockWindow } from '../../utils/methods';
@@ -60,7 +60,7 @@ const Header = () => {
           <Link className="logo" to="/?to=heading"><img src="/images/header-logo.png" alt=""/></Link>
           <MenuWrapper className="menu" open={open}>
             <LinksList data={wording.links} onLinkClick={handleCloseLinksMenu} />
-            <SocialsList data={wording.socials} />
+            <SocialList data={wording.socials} />
           </MenuWrapper>
           <MenuButton open={open} onClick={handleToggleLinksMenu}>
             <div></div>

@@ -26,9 +26,9 @@
             "heading": "“May the Samurai be with you!”",
             "cards": [
                 { "heading": "/images/homepage-card-title-1.png", "heading_m": "/images/homepage-card-title-1-mobile.png", "background": "#435762", "qty": "/images/homepage-card-qty-400.png", "samurai": "/images/homepage-card-samurai-titan.png", "samurai_m": "/images/homepage-card-samurai-titan-mobile.png", "content": "“We have no master, no lord. \nNot like the others, we belong to ourselves. It’s not a big deal. Protecting others and upholding justice are our daily lives.”" },
-                { "heading": "/images/homepage-card-title-3.png", "heading_m": "/images/homepage-card-title-3-mobile.png", "background": "#959273", "qty": "/images/homepage-card-qty-5000.png", "samurai": "/images/homepage-card-samurai-ronine.png", "samurai_m": "/images/homepage-card-samurai-ronine.png", "content": "“Only Samurai Aliens, Apes, and Zombies like us can be the leader of the military. All of the human beings are under our domination.”" },
+                { "heading": "/images/homepage-card-title-4.png", "heading_m": "/images/homepage-card-title-4-mobile.png", "background": "#5f806d", "qty": "/images/homepage-card-qty-1600.png", "samurai": "/images/homepage-card-samurai-noble.png", "samurai_m": "/images/homepage-card-samurai-noble.png", "content": "“With great power and wealth, we get to stand on the top of human beings and, most importantly, stay close with the Titans. Your Highness, it’s our honor to dress you around.”" },
                 { "heading": "/images/homepage-card-title-2.png", "heading_m": "/images/homepage-card-title-2-mobile.png", "background": "#e5a896", "qty": "/images/homepage-card-qty-3000.png", "samurai": "/images/homepage-card-samurai-general.png", "samurai_m": "/images/homepage-card-samurai-general.png", "content": "“In fighting and in everyday life, we should be determined though calm. Be loyal to the Nobels and be their respected warriors.”" },
-                { "heading": "/images/homepage-card-title-4.png", "heading_m": "/images/homepage-card-title-4-mobile.png", "background": "#5f806d", "qty": "/images/homepage-card-qty-1600.png", "samurai": "/images/homepage-card-samurai-noble.png", "samurai_m": "/images/homepage-card-samurai-noble.png", "content": "“With great power and wealth, we get to stand on the top of human beings and, most importantly, stay close with the Titans. Your Highness, it’s our honor to dress you around.”" }
+                { "heading": "/images/homepage-card-title-3.png", "heading_m": "/images/homepage-card-title-3-mobile.png", "background": "#959273", "qty": "/images/homepage-card-qty-5000.png", "samurai": "/images/homepage-card-samurai-ronine.png", "samurai_m": "/images/homepage-card-samurai-ronine.png", "content": "“Only Samurai Aliens, Apes, and Zombies like us can be the leader of the military. All of the human beings are under our domination.”" }
             ]
         },
         "purchase": {
@@ -39,9 +39,7 @@
                 {"title": "General samurai", "percent": 30},
                 {"title": "Ronin samurai", "percent":  50}
             ],
-            "price": "PRICE",
-            "quantity": "QUANTITY",
-            "purchase": "PURCHASE",
+            "price": 0.05,
             "sold": [
                 { "percent": 10, "content": "The Titans will generously grant 5 of their underlings to you on Discord."},
                 { "percent": 20, "content": "The map of power distribution gets unlocked. Check out which Shogunate your Samurai is belonging to."},
@@ -60,35 +58,28 @@
             "subtitle": "Samurai_punks is a collection of 10,000 unique digital samurai. In 2021, Cryptopunks accidentally travel back to ancient Japan. They belong to different classes, and own various power value, with their legends. ",
             "article": {
                 "title": "The elements of your \nSamurai may be composed of:",
-                "content": "Scenery: Four seasons of Fuji, Hokkaido, Kyoto, Tokyo, Osaka\nClothes: Bitokoni, Ethariamu, Binansi, Carudano, Rippuru (size S, M, L, XL)\nRace: Human, Zombie, Ape, Alien\nEyes: Slanted eyes, Red eyes, Small eyes, Geisha eyes, Alien eyes\nHats and hairstyles: Bandana, Bamboo hat, Purple Cap, Green cap, Beanie, Hoodie, Knitted cap, Mohawk Hairstyle, Long hair, Big beard\nAccessories: Ethereum earring, Tongue out, Pipe, 3D Glasses, VR, Nerd Glasses, Glasses with chain\nPersona: it might be a quote, an accomplishment, or a secret that no one else knows\n\n(Note that there are more additional surprises to be unlocked!)"
-            }
+                "content": "Scenery: Four seasons of Fuji, Hokkaido, Kyoto, Tokyo, Osaka\n\nClothes: Bitokoni, Ethariamu, Binansi, Carudano, Rippuru (size S, M, L, XL)\n\nRace: Human, Zombie, Ape, Alien\n\nEyes: Slanted eyes, Red eyes, Small eyes, Geisha eyes, Alien eyes\n\nHats and hairstyles: Bandana, Bamboo hat, Purple Cap, Green cap, Beanie, Hoodie, Knitted cap, Mohawk Hairstyle, Long hair, Big beard\n\nAccessories: Ethereum earring, Tongue out, Pipe, 3D Glasses, VR, Nerd Glasses, Glasses with chain\n\nPersona: it might be a quote, an accomplishment, or a secret that no one else knows\n\n\n(Note that there are more additional surprises to be unlocked!)"
+            },
+            "socials": [
+                { "icon": "Medium", "link": "https://medium.com/@samuraipunks" },
+                { "icon": "Discord", "link": "" },
+                { "icon": "Twitter", "link": "" }
+            ]
         }
     },
     "header": {
         "links": [
             { "to": "/?to=gallery", "title": "GALLERY"},
-            { "to": "/", "title": "SOCIAL CLASS" },
+            { "to": "/?to=social-class", "title": "SOCIAL CLASS" },
             { "to": "/?to=purchase", "title": "BUY"},
             { "to": "/", "title": "MY SAMURAI"},
-            { "to": "/", "title": "ROAD MAP"},
+            { "to": "/?to=road-map", "title": "ROAD MAP"},
             { "to": "/?to=about", "title": "ABOUT US"}
         ],
         "socials": [
-            { "icon": "Medium", "link": "" },
+            { "icon": "Medium", "link": "https://medium.com/@samuraipunks" },
             { "icon": "Discord", "link": "" },
             { "icon": "Twitter", "link": "" }
         ]
-    },
-    "footer": {
-        "tel": "TEL : 02 2707 7121",
-        "email": "MAIL : 1234@gmail.com",
-        "copyright": "Copyright © 2021投募達集募資顧問有限公司, All rights reserved"
-    },
-    "common": {
-        "asc_full": "舊到新",
-        "asc_part": "舊",
-        "desc_full": "新到舊",
-        "desc_part": "新"
     }
-
 }

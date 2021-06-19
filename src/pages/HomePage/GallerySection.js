@@ -31,13 +31,13 @@ const GallerySection = ({ wording, qty=45, ...props }) => {
   
   function renderWallItem() {
     let items = [];
-    const list = ["21", "9", "29", "38", "73", "83", "89", "90", "109", "117", "129", "166", "179", "184", "223", "232", "312", "328", "351", "375", "514", "822", "892", "1114", "1380", "1397", "1550", "1590", "1628", "1654", "1899", "1910", "1981", "2109", "2410", "2961", "3228", "3267", "3517", "3862", "3863", "5142", "5143", "5870", "6865", "7312", "8236"];
+    const list = ["3","9","21","29","38","73","83","89","90","109","117","129","166","179","184","223","232","312","328","351","375","514","822","892","1114","1380","1550","1590","1628","1654","1899","1910","1981","2109","2410","2730","2961","3267","3517","3862","3863","5142","5143","5870","6359","6865","7280","7312","8236"];
     const currentQty = detectMob() ? 30 : 45;
 
     for (let i = 0; i < currentQty; i++) {
       items.push(
         <WallItem key={i} data-samurai={list[i]} onClick={handleOpenModalBox}>
-          <Img src={`/images/samurai/${list[i]}.png`} />
+          <Img src={`/images/samurai/${list[i]}.jpg`} />
           <p>#{ zeroTransfer(list[i]) }</p>
         </WallItem>
       );
@@ -49,7 +49,10 @@ const GallerySection = ({ wording, qty=45, ...props }) => {
   return (
     <Root {...props}>
       <ModalBox open={openModal} onClose={handleCloseModal}>
-        <Img src={`/images/samurai/${currentSamurai}.png`} />
+        <ModalContent>
+          <ModalImg fill="contain" src={`/images/samurai/${currentSamurai}.jpg`} />
+          <p>#{ zeroTransfer(currentSamurai) }</p>
+        </ModalContent>
       </ModalBox>
       <Wrapper>
         { renderWallItem() }
@@ -103,6 +106,29 @@ const WallItem = styled.div`
     p {
       opacity: 1;
     }
+  }
+`
+
+const ModalContent = styled.div`
+  ${respondTo.md} {
+    width: 100vw;
+  }
+  p {
+    display: none;
+    margin-top: 12px;
+    color: ${colors.white};
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    ${respondTo.md} {
+      display: block;
+    }
+  }
+`
+
+const ModalImg = styled(Img)`
+  ${respondTo.md} {
+    width: 100%;
   }
 `
 

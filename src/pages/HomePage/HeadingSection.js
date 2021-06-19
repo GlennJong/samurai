@@ -150,8 +150,11 @@ const Background = styled(Img)`
 `
 
 const Logo = styled(Img)`
+  margin: auto;
+  max-width: 65vw;
   transform: scale(0.3);
   transition: transform 2s cubic-bezier(.79,.01,.42,1.81);
+  pointer-events: none;
   ${({ active }) => active && css`
     transform: scale(1);
   `}
@@ -159,15 +162,18 @@ const Logo = styled(Img)`
 
 const Samurai = styled(Img)`
   width: 600px;
+  max-width: 50vw;
   ${({ left }) => left && css` transform: translateX(-5%); `}
   ${({ right }) => right && css` transform: translateX(5%); `}
   opacity: 0;
   transition: all 2s cubic-bezier(.79,.01,.42,1.81);
+  pointer-events: none;
   ${({ active }) => active && css`
     opacity: 1;
     transform: translateY(0);
   `}
   ${respondTo.md} {
+    max-width: 100vw;
     ${({ right }) => right && css` display: none; `}
     ${({ left }) => left && css` width: 100%; `}
   }
