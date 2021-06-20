@@ -9,6 +9,7 @@ import { detectMob } from '../../utils/methods';
 const GallerySection = ({ wording, qty=45, ...props }) => {
   const [ currentSamurai, setCurrentSamurai ] = useState(null);
   const [ openModal, setOpenModal ] = useState(false);
+  const samuraiItems = detectMob() ? wording.mobile : wording.desktop;
 
   const zeroTransfer = (num) => {
     let str = num + "";
@@ -29,23 +30,6 @@ const GallerySection = ({ wording, qty=45, ...props }) => {
     setOpenModal(false);
   }
   
-  function renderWallItem() {
-    let items = [];
-    const list = ["3","9","21","29","38","73","83","89","90","109","117","129","166","179","184","223","232","312","328","351","375","514","822","892","1114","1380","1550","1590","1628","1654","1899","1910","1981","2109","2410","2730","2961","3267","3517","3862","3863","5142","5143","5870","6359","6865","7280","7312","8236"];
-    const currentQty = detectMob() ? 30 : 45;
-
-    for (let i = 0; i < currentQty; i++) {
-      items.push(
-        <WallItem key={i} data-samurai={list[i]} onClick={handleOpenModalBox}>
-          <Img src={`/images/samurai/${list[i]}.jpg`} />
-          <p>#{ zeroTransfer(list[i]) }</p>
-        </WallItem>
-      );
-    };
-    
-    return items;
-  }
-
   return (
     <Root {...props}>
       <ModalBox open={openModal} onClose={handleCloseModal}>
@@ -55,7 +39,12 @@ const GallerySection = ({ wording, qty=45, ...props }) => {
         </ModalContent>
       </ModalBox>
       <Wrapper>
-        { renderWallItem() }
+        { samuraiItems.map((item, i) =>
+          <WallItem key={i} data-samurai={item} onClick={handleOpenModalBox}>
+            <Img src={`/images/samurai/${item}.jpg`} />
+            <p>#{ zeroTransfer(item) }</p>
+          </WallItem>
+        ) }
       </Wrapper>
     </Root>
   )
