@@ -253,7 +253,7 @@ const Heading = styled(Img)`
   transition: all 1s ease;
   ${({ extend }) => extend && css`
     left: 5%;
-    width: 40%;
+    width: 36%;
   `}
   ${respondTo.md} {
     display: none;
