@@ -22,7 +22,7 @@ const CardItem = ({ size, data, ...props }) => {
       }, 300);
     }
     else {
-      setExtend(true);
+      setExtend(!extend);
     }
   }
 
@@ -42,8 +42,7 @@ const CardItem = ({ size, data, ...props }) => {
           cardsize={cardSize}
           extend={extend}
           data={data}
-          onOpenClick={handleExtendCard}
-          onCloseClick={handleCloseCard} />
+          onCoverClick={handleExtendCard} />
       </Root>
     )
   }
@@ -56,34 +55,45 @@ const CardItem = ({ size, data, ...props }) => {
           cardsize={cardSize}
           extend={extend}
           data={data}
-          onOpenClick={handleExtendCard}
-          onCloseClick={handleCloseCard} />
+          onCoverClick={handleExtendCard} />
       </Root>
     )
   }
 }
 
-const CardTemplate = ({data, type, extend, onOpenClick, cardsize, onCloseClick, ...props}) => {
+const CardTemplate = ({data, type, extend, onCoverClick, cardsize, onCloseClick, ...props}) => {
   const { samurai, samurai_m, heading, heading_m, content, background, qty } = data;
   return (
     <Card cardsize={cardsize} background={background} extend={extend} type={type} {...props}>
-      { !extend && <Cover onClick={onOpenClick} /> }
+      <Cover onClick={onCoverClick} />
       <Background type={type} extend={extend && type === 'sm'} src="/images/homepage-card-background.png" />
       <Button type={type} extend={extend} onClick={onCloseClick}><Img src="/images/homepage-button-icon.png" /></Button>
       <Heading type={type} extend={extend && type === 'sm'} src={heading} />
       <HeadingForMobile type={type} extend={extend && type === 'sm'} src={heading_m} />
       <Content type={type} extend={extend}>{content}</Content>
-      <SamuraiList extend={extend && type === 'sm'} ready={cardsize ? true : false}>
-        <SamuraiItem type={type} src={samurai} />
-        <SamuraiItemMobile type={type} src={samurai_m} />
-        { type === 'sm' &&
-          <SamuraiItemMirror type={type} src={samurai} />
-        }
-      </SamuraiList>
+      <SamuraiWrapper>
+        <SamuraiList extend={extend && type === 'sm'} ready={cardsize ? true : false}>
+          {
+            type === 'lg' &&
+            <>
+            <SamuraiItem extend={extend} type="lg"><Img className="image" src={samurai} /></SamuraiItem>
+            <SamuraiItemMobile type="lg"><Img className="image" src={samurai} /></SamuraiItemMobile>
+            </>
+          }
+          { type === 'sm' &&
+            <>
+            <SamuraiItem extend={extend} type="sm"><Img className="image" src={samurai} /></SamuraiItem>
+            <SamuraiItemMobile type="sm"><Img className="image" src={samurai} /></SamuraiItemMobile>
+            <SamuraiItemMirror extend={extend} type="sm"><Img className="image" src={samurai} /></SamuraiItemMirror>
+            </>
+          }
+        </SamuraiList>
+      </SamuraiWrapper>
       <Qty type={type} src={qty} extend={extend} />
     </Card>
   )
 }
+
 
 const Holder = styled.div`
   ${({ cardsize }) => cardsize && css`
@@ -149,9 +159,9 @@ const Cover = styled.div`
   height: 100%;
   z-index: 2;
   cursor: pointer;
-  ${respondTo.md} {
+  ${'' /* ${respondTo.md} {
     display: none;
-  }
+  } */}
 `
 
 const Content = styled.div`
@@ -168,7 +178,7 @@ const Content = styled.div`
     top: 30%;
   `}
   ${({ type }) => type === 'sm' && css`
-    top: 40%;
+    top: 42%;
   `}
   ${({ extend }) => extend && css`
     opacity: 1;
@@ -199,20 +209,30 @@ const Background = styled(Img)`
   `}
 `
 
+const SamuraiWrapper = styled.div`
+  width: 100%;
+`
 const SamuraiList = styled.div`
   position: relative;
   width: 100%;
   white-space: nowrap;
   transition: transform 2s ease;
-  ${({ extend }) => extend && css` transform: translateX(-55%); `};
+  ${({ extend }) => extend && css` transform: translateX(-200%); `};
 `
 
-const SamuraiItem = styled(Img)`
+const SamuraiItem = styled.div`
   display: inline-block;
   position: relative;
-  width: 55%;
   bottom: -10px;
-  z-index: ${({ length, index }) => (index-length)*-1 };
+  width: 100%;
+  .image {
+    width: 50%;
+    transition: width 2s ease;
+    ${({ type }) => type === 'sm' && css`
+      width: 80%;
+      ${({ extend }) => extend && css` width: 50%`};
+    `}
+  }
   ${respondTo.md} {
     display: none;
   }
@@ -249,7 +269,7 @@ const Heading = styled(Img)`
   position: absolute;
   top: 12px;
   left: 0;
-  width: 80%;
+  width: 70%;
   transition: all 1s ease;
   ${({ extend }) => extend && css`
     left: 5%;

@@ -5,6 +5,7 @@ import Img from '../../components/Img';
 import { scrollTo } from '../../utils/scrollTo';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 import { respondTo } from '../../utils/responsive';
+import { detectMob } from '../../utils/methods';
 
 const HeadingSection = ({ ...props }) => {
   const rootRef = useRef(null);
@@ -35,7 +36,7 @@ const HeadingSection = ({ ...props }) => {
           <Logo active={active} src="/images/homepage-heading-logo.png" alt="" />
         </div>
         <div className="background">
-          <Background active={active} fill="height" src="/images/homepage-heading-background.png" alt="" />
+          <Background active={active} fill={detectMob() ? "height" : "cover"} src="/images/homepage-heading-background.png" alt="" />
         </div>
         <div className="samurai left">
           <Samurai active={active} left src="/images/homepage-heading-1.png" alt="" />
@@ -134,6 +135,7 @@ const Wrapper = styled.div`
     bottom: 40px;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 3;
   }
 `
 
@@ -151,7 +153,7 @@ const Background = styled(Img)`
 
 const Logo = styled(Img)`
   margin: auto;
-  max-width: 65vw;
+  max-width: 60vw;
   transform: scale(0.3);
   transition: transform 2s cubic-bezier(.79,.01,.42,1.81);
   pointer-events: none;
@@ -162,7 +164,7 @@ const Logo = styled(Img)`
 
 const Samurai = styled(Img)`
   width: 600px;
-  max-width: 50vw;
+  max-width: 40vw;
   ${({ left }) => left && css` transform: translateX(-5%); `}
   ${({ right }) => right && css` transform: translateX(5%); `}
   opacity: 0;
