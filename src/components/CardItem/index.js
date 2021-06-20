@@ -77,13 +77,13 @@ const CardTemplate = ({data, type, extend, onCoverClick, cardsize, onCloseClick,
             type === 'lg' &&
             <>
             <SamuraiItem extend={extend} type="lg"><Img className="image" src={samurai} /></SamuraiItem>
-            <SamuraiItemMobile type="lg"><Img className="image" src={samurai} /></SamuraiItemMobile>
+            <SamuraiItemMobile type="lg"><Img className="image" src={samurai_m} /></SamuraiItemMobile>
             </>
           }
           { type === 'sm' &&
             <>
             <SamuraiItem extend={extend} type="sm"><Img className="image" src={samurai} /></SamuraiItem>
-            <SamuraiItemMobile type="sm"><Img className="image" src={samurai} /></SamuraiItemMobile>
+            <SamuraiItemMobile type="sm"><Img className="image" src={samurai_m} /></SamuraiItemMobile>
             <SamuraiItemMirror extend={extend} type="sm"><Img className="image" src={samurai} /></SamuraiItemMirror>
             </>
           }
@@ -207,6 +207,9 @@ const Background = styled(Img)`
   ${({ extend }) => extend && css`
     opacity: 1;
   `}
+  ${respondTo.md} {
+    display: none;
+  }
 `
 
 const SamuraiWrapper = styled.div`
@@ -232,6 +235,9 @@ const SamuraiItem = styled.div`
       width: 80%;
       ${({ extend }) => extend && css` width: 50%`};
     `}
+    ${respondTo.md} {
+      width: 100%;
+    }
   }
   ${respondTo.md} {
     display: none;
