@@ -2,14 +2,18 @@ import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { colors } from '../../constants/colors';
 import Img from '../../components/Img';
-import StickySection from '../../components/StickySection';
+// import StickySection from '../../components/StickySection';
+import FloatScrollSection from '../../components/FloatScrollSection';
 import { respondTo } from '../../utils/responsive';
 import { detectMob } from '../../utils/methods';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 
 const IntroSection = ({ wording, ...props }) => {
   const rootRef = useRef(null);
+  const contentWrapperRef = useRef(null);
   const backSamuraiRef = useRef(null);
+  const dialogRef = useRef(null);
+  const maskRef = useRef(null);
   const [ applyScrollWatcher, setApplyScrollWatcher ] = useState(false);
   const [ dialogStep, setDialogStep ] = useState(1);
   const [ backSamurai, setBackSamurai ] = useState(1);
@@ -33,36 +37,92 @@ const IntroSection = ({ wording, ...props }) => {
     setBackSamurai(step);
   }
 
+
+  function handleScrollSection(status) {
+    if (!detectMob()) applyDesktopScrollSection(status)
+    else applyMobileScrollSection(status)
+  }
+  
+  function applyDesktopScrollSection(status) {
+    const { current } = status;
+    const preOffsetY = 72;
+    const dialogTriggerStart = dialogRef.current.offsetTop - preOffsetY;
+    const dialogTriggerEnd = dialogTriggerStart + 600;
+    const maskTriggerStart = maskRef.current.offsetTop + 600 - preOffsetY;
+    const maskTriggerEnd = maskTriggerStart + 400;
+
+    if (current < dialogTriggerStart) {
+      contentWrapperRef.current.style.transform = `translateY(-${current}px)`;
+    }
+    else if (current > dialogTriggerStart && current < dialogTriggerEnd) {
+      if (current > dialogTriggerStart && current < dialogTriggerStart + 200) setDialogStep(1)
+      else if (current > dialogTriggerStart + 200 && current < dialogTriggerStart + 400) setDialogStep(2)
+      else if (current > dialogTriggerStart + 400 && current < dialogTriggerStart + 600) setDialogStep(3)
+    }
+    else if (current > dialogTriggerEnd && current < maskTriggerStart ) {
+      contentWrapperRef.current.style.transform = `translateY(-${current-600}px)`;
+    }
+    else if (current > maskTriggerStart && current < maskTriggerEnd ) {
+      if (current > maskTriggerStart && current < maskTriggerStart + 200) setBackSamurai(1)
+      else if (current > maskTriggerStart + 200 && current < maskTriggerStart + 400) setBackSamurai(2)
+    }
+    else if (current > maskTriggerEnd) {
+      contentWrapperRef.current.style.transform = `translateY(-${current-1000}px)`;
+    }
+  }
+
+  function applyMobileScrollSection(status) {
+    const { current } = status;
+    const preOffsetY = (window.innerHeight/3);
+    const maskTriggerStart = maskRef.current.offsetTop - preOffsetY;
+    const maskTriggerEnd = maskTriggerStart + 400;
+
+    if (current < maskTriggerStart) {
+      contentWrapperRef.current.style.transform = `translateY(-${current}px)`;
+    }
+    else if (current > maskTriggerStart && current < maskTriggerEnd ) {
+      if (current > maskTriggerStart && current < maskTriggerStart + 200) setBackSamurai(1)
+      else if (current > maskTriggerStart + 200 && current < maskTriggerStart + 400) setBackSamurai(2)
+    }
+    else if (current > maskTriggerEnd) {
+      contentWrapperRef.current.style.transform = `translateY(-${current-400}px)`;
+    }
+  }
+
   return (
     <>
-    <Blocker />
+    {/* <Blocker /> */}
     <Root ref={rootRef} {...props}>
-      <DialogScreen active={applyScrollWatcher} offsetY={0} onMove={handleTriggerDialog} steps={3}>
-        <DialogWrapper>
-          <DialogItem show={dialogStep === 1}>
-            <p className="title">{ wording.dialog1.title }</p>
-            <p className="content">{ wording.dialog1.content }</p>
-          </DialogItem>
-          <Icon turn={dialogStep === 3} show={dialogStep === 2 || dialogStep === 3} className="icon" src="/images/homepage-intro-icon.png" />
-          <DialogItem show={dialogStep === 2}>
-            <p className="content">{ wording.dialog2 }</p>
-          </DialogItem>
-          <DialogItem show={dialogStep === 3}>
-            <p className="content">{ wording.dialog3 }</p>
-          </DialogItem>
-        </DialogWrapper>
-      </DialogScreen>
-      <br />
-      <MaskScreen active={applyScrollWatcher} offsetY={ detectMob() ? window.innerHeight/3 : 0 } onMove={handleTriggerMask} steps={2} enableOnMobile={true}>
-        <MaskWrapper>
-          <Cover src={wording.cover}></Cover>
-          <BackSamuraiContent ref={backSamuraiRef} index={backSamurai-1}>
-            { wording.samurai.map((item, i) =>
-              <BackItem key={i} src={item} />
-            ) }
-          </BackSamuraiContent>
-        </MaskWrapper>
-      </MaskScreen>
+      <FloatScrollSection onScroll={handleScrollSection} addition={ detectMob() ? 400 : 600 + 400}>
+        <ContentWrapper ref={contentWrapperRef}>
+          <DialogScreen>
+            <DialogWrapper ref={dialogRef}>
+              <DialogItem show={dialogStep === 1}>
+                <p className="title">{ wording.dialog1.title }</p>
+                <p className="content">{ wording.dialog1.content }</p>
+              </DialogItem>
+              <Icon turn={dialogStep === 3} show={dialogStep === 2 || dialogStep === 3} className="icon" src="/images/homepage-intro-icon.png" />
+              <DialogItem show={dialogStep === 2}>
+                <p className="content">{ wording.dialog2 }</p>
+              </DialogItem>
+              <DialogItem show={dialogStep === 3}>
+                <p className="content">{ wording.dialog3 }</p>
+              </DialogItem>
+            </DialogWrapper>
+          </DialogScreen>
+          <br />
+          <MaskScreen>
+            <MaskWrapper ref={maskRef}>
+              <Cover src={wording.cover}></Cover>
+              <BackSamuraiContent ref={backSamuraiRef} index={backSamurai}>
+                { wording.samurai.map((item, i) =>
+                  <BackItem key={i} src={item} />
+                ) }
+              </BackSamuraiContent>
+            </MaskWrapper>
+          </MaskScreen>
+        </ContentWrapper>
+      </FloatScrollSection>
     </Root>
     </>
   )
@@ -76,7 +136,10 @@ const Root = styled.div`
   background: ${colors.black};
   overflow: hidden;
 `
-const DialogScreen = styled(StickySection)`
+const ContentWrapper = styled.div`
+`
+
+const DialogScreen = styled.div`
   position: relative;
   padding-top: 160px;
   padding-bottom: 100px;
@@ -161,7 +224,7 @@ const DialogItem = styled.div`
     }
   }
 `
-const MaskScreen = styled(StickySection)`
+const MaskScreen = styled.div`
   padding-top: 100px;
   ${respondTo.md} {
     padding-top: 60px;
@@ -184,7 +247,7 @@ const BackSamuraiContent = styled.div`
   z-index: -1;
   transition: transform 1s ease;
   ${({ index }) => css`
-    transform: translateY(-${50 * index}%);
+    transform: translateY(-${50 * (index-1)}%);
   `}
 `
 const BackItem = styled(Img)`
