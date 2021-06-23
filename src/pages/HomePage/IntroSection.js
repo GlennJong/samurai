@@ -25,7 +25,6 @@ const IntroSection = ({ wording, ...props }) => {
   });
 
   function handleActiveScrollWatcher(e) {
-    console.log(e[0].isIntersecting)
     setApplyScrollWatcher(e[0].isIntersecting);
   }
 

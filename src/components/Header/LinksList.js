@@ -23,7 +23,7 @@ const List = styled.div`
 
 const LinkItem = styled(Link)`
   display: block;
-  margin-right: 45px;
+  margin-right: 40px;
   font-size: 16px;
   transition: color .3s ease;
   &:last-child {

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import AutoScrollHelper from '../AutoScrollHelper';
@@ -8,6 +9,7 @@ import { _w } from '../../utils/wordingSystem';
 import { respondTo } from '../../utils/responsive';
 import { lockWindow } from '../../utils/methods';
 import { colors } from '../../constants/colors';
+import walletStatus from '../../store/walletStatus';
 
 const Header = () => {
   const wording = _w('header');
@@ -19,6 +21,11 @@ const Header = () => {
   const navbarTop = useRef(0);
 
   const [ open, setOpen ] = useState(false);
+
+  const dispatch = useDispatch(walletStatus);
+  const { connectId } = useSelector(state => state.walletStatus);
+
+  console.log(connectId)
   
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);    
@@ -37,6 +44,10 @@ const Header = () => {
     fixederRef.current.style.setProperty('transform', `translateY(${navbarTop.current}px)`);
 
     prevPageYOffset.current = pageYOffset;
+  }
+
+  const handleClickWalletButton = () => {
+    dispatch(walletStatus.actions.connectWallet());
   }
 
   const handleCloseLinksMenu = () => {
@@ -60,7 +71,12 @@ const Header = () => {
           <Link className="logo" to="/?to=heading"><img src="/images/header-logo.png" alt=""/></Link>
           <MenuWrapper className="menu" open={open}>
             <LinksList data={wording.links} onLinkClick={handleCloseLinksMenu} />
-            <SocialList data={wording.socials} />
+            <Others>
+              <ConnectButton onClick={handleClickWalletButton}>
+                { connectId || 'CONNECT WALLET' }
+              </ConnectButton>
+              <SocialList data={wording.socials} />
+            </Others>
           </MenuWrapper>
           <MenuButton open={open} onClick={handleToggleLinksMenu}>
             <div></div>
@@ -113,7 +129,7 @@ const Wrapper = styled.div`
     }
   }
   .menu {
-    width: 66vw;
+    width: 70vw;
     ${respondTo.md} {
       width: 100vw;
     }
@@ -168,6 +184,33 @@ const MenuButton = styled.button`
   }
   ${ respondTo.md } {
     display: block;
+  }
+`
+
+const Others = styled.div`
+  display: flex;
+  ${respondTo.md} {
+    display: block;
+    margin-top: 80px;
+    text-align: center;
+  }
+`
+
+const ConnectButton = styled.button`
+  border: 0;
+  border-radius: 24px;
+  margin-right: 24px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  background: ${colors.white};
+  color: ${colors.black};
+  white-space: nowrap;
+  ${respondTo.md} {
+    margin: 0;
+    margin-bottom: 32px;
+    padding: 12px 32px;
+    font-size: 20px;
   }
 `
 

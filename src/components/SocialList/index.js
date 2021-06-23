@@ -27,16 +27,14 @@ const List = styled.div`
   display: flex;
   align-items: center;
   ${respondTo.md} {
-    margin-top: 80px;
     justify-content: center;
   }
 `
 const Item = styled.a`
   display: flex;
   align-items: center;
-  margin-left: 24px;
-  &:first-child {
-    margin: 0;
+  & + a {
+    margin-left: 24px;
   }
 `
 

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled, { css } from 'styled-components';
 import Img from '../../components/Img';
 import { colors } from '../../constants/colors';
@@ -7,6 +8,7 @@ import { Plus, Minus } from '../../components/Icons';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 import { detectMob } from '../../utils/methods';
 import { respondTo } from '../../utils/responsive';
+import walletStatus from '../../store/walletStatus';
 import { connectWallet, getCurrentWalletConnected, mintNFT} from "../../utils/Interact.js";
 import dotenv from 'dotenv'
 import Web3 from 'web3';
@@ -22,8 +24,21 @@ const PurchaseSection = ({ wording, ...props }) => {
   const soldWrapperRef = useRef(null);
 
   const [walletAddress, setWallet] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("123123123");
   const [cursells,setCurSells]=useState(0)
+
+  const dispatch = useDispatch(walletStatus);
+  const { status:currentWalletStatus } = useSelector(state => state.walletStatus);
+
+  useEffect(() => {
+    if (currentWalletStatus === 'connect') {
+      // do somthing for connection
+      dispatch(walletStatus.actions.setConnectId('00000000'));
+    }
+    else if (currentWalletStatus === 'disconnect') {
+      // do something for disconnection
+    }
+  }, [currentWalletStatus])
 
   function addWalletListener() {
     if (window.ethereum) {
@@ -124,7 +139,6 @@ const PurchaseSection = ({ wording, ...props }) => {
               <div className="amount">
                 <Img className="icon" src="/images/icon-coin.svg" />
                 <p className="price">{ (wording.price * qty).toFixed(2) }</p>
-                {/* <p className="hint">($115.77)</p> */}
               </div>
             </Price>
             <Qty>
@@ -138,6 +152,7 @@ const PurchaseSection = ({ wording, ...props }) => {
               </div>
             </Qty>
             <BuyButton onClick={() => onMintPressed(qty)}>PURCHASE</BuyButton>
+            <Hint>{ status }</Hint>
             <ConnectButton onClick={connectWalletPressed}>
               {walletAddress.length > 0 ? (
                 "Connected: " + String(walletAddress).substring(0, 6) +
@@ -270,6 +285,10 @@ const Purchase = styled.div`
     margin-left: 4px;
     font-size: 18px;
   }
+`
+
+const Hint = styled.div`
+  margin-top: 8px;
 `
 
 const Price = styled.div`

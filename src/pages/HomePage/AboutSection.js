@@ -190,7 +190,6 @@ const Contact = styled.div`
     }
     a {
       display: inline-block;
-      margin-right: 24px;
     }
   }
 `

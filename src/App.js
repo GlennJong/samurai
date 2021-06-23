@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { useWordingLoader } from './utils/wordingSystem';
 
 import appStore from './store/app';
+import walletStatus from './store/walletStatus';
 
 import GlobalStyle from './components/GlobalStyle';
 import Header from './components/Header';
@@ -14,7 +15,8 @@ import HomePage from './pages/HomePage';
 import Metadata from './pages/Metadata';
 
 const reducer = combineReducers({
-  app: appStore.reducer
+  app: appStore.reducer,
+  walletStatus: walletStatus.reducer
 });
 
 const store = createStore(reducer);
