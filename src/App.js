@@ -11,6 +11,7 @@ import GlobalStyle from './components/GlobalStyle';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
+import Metadata from './pages/Metadata';
 
 const reducer = combineReducers({
   app: appStore.reducer
@@ -37,7 +38,7 @@ const App = ({ wording, Router = BrowserRouter }) => {
         { wordingLoaded &&
           <>
             <Header />
-            <Switch>  
+            <Switch>
               <Route path="/" exact={true} component={HomePage} />
               <Route path="/?to=heading" exact={true} component={HomePage} />
               <Route path="/?to=intro" exact={true} component={HomePage} />
@@ -49,6 +50,7 @@ const App = ({ wording, Router = BrowserRouter }) => {
               <Route path="/?to=purchase" exact={true} component={HomePage} />
               <Route path="/?to=description" exact={true} component={HomePage} />
               <Route path="/?to=about" exact={true} component={HomePage} />
+              <Route path="/metadata" component={Metadata}/>
             </Switch>
             <Footer />
           </>

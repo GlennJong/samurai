@@ -33,7 +33,7 @@ const Root = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/images/homepage-description-background.png');
+    background-image: url('/images/homepage-map.jpg');
     background-size: cover;
     opacity: 0.5;
     z-index: -1;
