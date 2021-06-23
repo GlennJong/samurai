@@ -21,6 +21,19 @@ const DescriptionSection = ({ wording, ...props }) => {
 
 const Root = styled.div`
   position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/homepage-description-background.png');
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+  }
 `
 
 const Icon = styled(Img)`
@@ -46,6 +59,9 @@ const Background = styled.div`
     opacity: .5;
     z-index: 1;
   }
+  ${respondTo.md} {
+    display: none;
+  }
 `
 
 const Content = styled.div`
@@ -55,6 +71,11 @@ const Content = styled.div`
   width: 100%;
   transform: translateY(-50%);
   z-index: 1;
+  ${respondTo.md} {
+    position: relative;
+    top: 0;
+    transform: translateY(0);
+  }
   .wrap {
     margin: 0 auto;
     width: 880px;
@@ -67,12 +88,16 @@ const Content = styled.div`
       font-size: 24px;
     }
     ${respondTo.md} {
+      padding: 0 36px;
+      padding-top: 60px;
+      padding-bottom: 70px;
       font-size: 18px;
+      box-sizing: border-box;
     }
     p + p {
       margin-top: 60px;
       ${respondTo.lg} {
-        font-size: 40px;
+        margin-top: 40px;
       }
       ${respondTo.md} {
         margin-top: 36px;

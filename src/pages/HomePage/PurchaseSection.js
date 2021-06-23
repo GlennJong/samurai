@@ -24,7 +24,7 @@ const PurchaseSection = ({ wording, ...props }) => {
   const soldWrapperRef = useRef(null);
 
   const [walletAddress, setWallet] = useState("");
-  const [status, setStatus] = useState("123123123");
+  const [status, setStatus] = useState("");
   const [cursells,setCurSells]=useState(0)
 
   const dispatch = useDispatch(walletStatus);
