@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import Img from '../../components/Img';
 import { colors } from '../../constants/colors';
@@ -7,11 +7,82 @@ import { Plus, Minus } from '../../components/Icons';
 import useIntersectionObserver from '../../utils/useIntersectionObserver';
 import { detectMob } from '../../utils/methods';
 import { respondTo } from '../../utils/responsive';
+import { connectWallet, getCurrentWalletConnected, mintNFT} from "../../utils/Interact.js";
+import dotenv from 'dotenv'
+import Web3 from 'web3';
+
+dotenv.config()
+const web3 = new Web3(Web3.givenProvider);
+const contractABI = require("../../contract-abi.json");
+const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS
 
 const PurchaseSection = ({ wording, ...props }) => {
   const [ qty, setQty ] = useState(1);
   const [ active, setActive ] = useState(false);
   const soldWrapperRef = useRef(null);
+
+  const [walletAddress, setWallet] = useState("");
+  const [status, setStatus] = useState("");
+  const [cursells,setCurSells]=useState(0)
+
+  function addWalletListener() {
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", (accounts) => {
+        if (accounts.length > 0) {
+          setWallet(accounts[0]);
+          setStatus("👉🏽 Awesome let's buy some stuff.");
+        } else {
+          setWallet("");
+          setStatus("🦊 Connect to Metamask using the top right button.");
+        }
+      });
+    } else {
+      setStatus(
+        <p>
+          {" 🦊 "}
+          <a target="_blank" href={`https://metamask.io/download.html`} rel="noopener noreferrer">
+            You must install Metamask, a virtual Ethereum wallet, in your browser.
+          </a>
+        </p>
+      );
+    }
+  }
+
+  const connectWalletPressed = async () => {
+      const walletResponse = await connectWallet();
+      setStatus(walletResponse.status);
+      setWallet(walletResponse.address);
+  };
+
+  const onMintPressed = async (amount) => {
+    // eslint-disable-next-line
+    const { success, status } = await mintNFT(amount);
+    setStatus(status);
+  };
+
+  useEffect(() => {
+    async function fetchWalletAPI() {
+      const { address, status } = await getCurrentWalletConnected();
+
+      setWallet(address);
+      setStatus(status);
+  
+      addWalletListener();
+    }
+    fetchWalletAPI()
+  }, []);
+
+  useEffect(() => {
+    const SamuraiContract = new web3.eth.Contract(contractABI, contractAddress);
+
+    SamuraiContract.events.mintEvent({
+        filter:{},
+        fromBlock: 0,
+      }, function(error, event){/*console.log(event);*/}).on("data", function(event) {
+        setCurSells(event.returnValues.totalSupply);
+      }).on('error', console.error);
+  }, [])
+
   useIntersectionObserver(soldWrapperRef, handleActiveAnimation, {
     root: null,
     rootMargin: '0px  0px -200px 0px',
@@ -63,10 +134,19 @@ const PurchaseSection = ({ wording, ...props }) => {
                   onPlusClick={handleAddQty}
                   onMinusClick={handleDecreaseQty}
                 />
-                <p className="hint">9999 REMAINING</p>
+                <p className="hint">{10000 - parseInt(cursells)} REMAINING </p>
               </div>
             </Qty>
-            <BuyButton>PURCHASE</BuyButton>
+            <BuyButton onClick={() => onMintPressed(qty)}>PURCHASE</BuyButton>
+            <ConnectButton onClick={connectWalletPressed}>
+              {walletAddress.length > 0 ? (
+                "Connected: " + String(walletAddress).substring(0, 6) +
+                "..." + String(walletAddress).substring(38)
+              ) : (
+                <span className="font-link">Connect Wallet</span>
+              )}
+            </ConnectButton>
+            <p id="status" className="font-link"> {status} </p>
           </Purchase>
         </Container>
       </BuyWrapper>
@@ -252,6 +332,23 @@ const BuyButton = styled.button`
     color: ${colors.white};
   }
 `
+
+const ConnectButton = styled.button`
+  border: 0;
+  margin-top: 72px;
+  width: 180px;
+  height: 60px;
+  border: 1px solid ${colors.white};
+  background: ${colors.white};
+  color: ${colors.black};
+  font-size: 20px;
+  font-weight: 900;
+  &:active {
+    background: transparent;
+    color: ${colors.white};
+  }
+`
+
 const Selector = styled.div`
   display: flex;
   .qty {
