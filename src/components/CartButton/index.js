@@ -35,8 +35,10 @@ const Root = styled(Link)`
   }
   .icon {
     width: 36px;
+    margin-left: -6px;
     ${respondTo.md} {
-      width: 24px;
+      margin-left: -4px;
+      width: 22px;
     }
   }
 `
