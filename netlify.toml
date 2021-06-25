@@ -1,0 +1,7 @@
+[build]
+    functions = "functions"
+
+[[redirects]]
+    from = "/Metadata/"
+    to = "/.netlify/functions/Metadata/:num"
+    status = 200

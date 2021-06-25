@@ -7,7 +7,7 @@ import { respondTo } from '../../utils/responsive';
 const DescriptionSection = ({ wording, ...props }) => {
   return (
     <Root {...props}>
-      <Background><Img src="/images/homepage-description-background.png" /></Background>
+      <Background><Img src="/images/homepage-map.jpg" /></Background>
       <Content>
         <div className="wrap">
           <Icon src="/images/icon-lock.svg" />
@@ -28,7 +28,7 @@ const Root = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/images/homepage-description-background.png');
+    background-image: url('/images/homepage-map.jpg');
     background-position: center center;
     background-size: cover;
     opacity: 0.5;

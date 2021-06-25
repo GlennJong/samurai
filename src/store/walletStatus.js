@@ -4,7 +4,8 @@ const appSlice = createSlice({
     name: 'walletStatus',
     initialState: {
         'status': 'disconnect',
-        'connectId': null
+        'connectId': null,
+        'hint': "🦊 Connect to Metamask using the top right button.",
     },
     reducers: {
         connectWallet: (state) => {
@@ -14,7 +15,10 @@ const appSlice = createSlice({
             state.status = 'disconnect';
         },
         setConnectId: (state, action) => {
-          state.connectId = action.payload;
+            state.connectId = action.payload;
+        },
+        setHint: (state, action) =>{
+            state.hint = action.payload;
         }
     }
 });
