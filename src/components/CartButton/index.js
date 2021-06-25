@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Cart } from '../../components/Icons';
+import Img from '../Img';
 import { colors } from '../../constants/colors';
 import { respondTo } from '../../utils/responsive';
 
 const CartButton = ({...props}) => {
   return (
-    <Root to="/?to=purchase" {...props}><Cart /></Root>
+    <Root to="/?to=purchase" {...props}>
+      <Img className="icon" src="/images/cart-icon.png" />
+    </Root>
   )
 }
 
@@ -30,7 +32,10 @@ const Root = styled(Link)`
     height: 48px;
     bottom: 20px;
     right: 12px;
-    svg {
+  }
+  .icon {
+    width: 36px;
+    ${respondTo.md} {
       width: 24px;
     }
   }

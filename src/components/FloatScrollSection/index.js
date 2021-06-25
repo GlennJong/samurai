@@ -29,7 +29,6 @@ const FloatScrollSection = ({ children, addition, onScroll, ...props }) => {
       activeRef.current = false;
     }
     
-    detectAdditionPosition();
     prevScrollRef.current = currentPageY;
     activeRef.current && handleActiveFloatSection();
   }
@@ -41,21 +40,9 @@ const FloatScrollSection = ({ children, addition, onScroll, ...props }) => {
     const progress = (currentPageY - contentTop) / contentHeight;
 
     if (currentPageY > (contentTop + contentHeight - window.innerHeight - (addition * progress))) {
-      // console.log('work')
       additionRef.current.style.height = addition - (addition * progress) + 'px';
     }
 
-  }
-
-  function detectAdditionPosition() {
-    const currentPageY = window.pageYOffset;
-    const rootTop = rootRef.current.offsetTop;
-    const rootHeight = rootRef.current.offsetHeight;
-    const reverse = prevScrollRef.current < currentPageY;
-    const after = currentPageY > rootTop + rootHeight;
-    
-    // if (reverse && after) additionRef.current.style.display = 'block'
-    // else additionRef.current.style.display = 'none';
   }
 
   function handleApplyAfterLoadImages() {
@@ -86,12 +73,13 @@ const FloatScrollSection = ({ children, addition, onScroll, ...props }) => {
   }
 
   function applyHolderAndAdditionSize() {
-    rootRef.current.style.height = contentRef.current.offsetHeight + addition + 'px';
-    additionRef.current.style.height = addition + 'px';
+    if (rootRef.current) {
+      rootRef.current.style.height = contentRef.current.offsetHeight + addition + 'px';
+      additionRef.current.style.height = addition + 'px';
+    }
   }
 
   function applyFloatSection() {
-    console.log('apply')
     contentRef.current.style.position = 'fixed';
     contentRef.current.style.width = '100%';
     contentRef.current.style.top = '0px';

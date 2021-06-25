@@ -159,9 +159,9 @@ const Cover = styled.div`
   height: 100%;
   z-index: 2;
   cursor: pointer;
-  ${'' /* ${respondTo.md} {
+  ${respondTo.md} {
     display: none;
-  } */}
+  }
 `
 
 const Content = styled.div`
