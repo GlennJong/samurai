@@ -63,8 +63,8 @@
             },
             "socials": [
                 { "icon": "Medium", "link": "https://medium.com/@samuraipunks" },
-                { "icon": "Discord", "link": "" },
-                { "icon": "Twitter", "link": "" }
+                { "icon": "Discord", "link": "https://discord.gg/pkuWTwBy" },
+                { "icon": "Twitter", "link": "https://twitter.com/Samurai_Punks" }
             ]
         }
     },
@@ -79,8 +79,8 @@
         ],
         "socials": [
             { "icon": "Medium", "link": "https://medium.com/@samuraipunks" },
-            { "icon": "Discord", "link": "" },
-            { "icon": "Twitter", "link": "" }
+            { "icon": "Discord", "link": "https://discord.gg/pkuWTwBy" },
+            { "icon": "Twitter", "link": "https://twitter.com/Samurai_Punks" }
         ]
     }
 }

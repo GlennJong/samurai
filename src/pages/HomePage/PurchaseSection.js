@@ -23,69 +23,51 @@ const PurchaseSection = ({ wording, ...props }) => {
   const [ active, setActive ] = useState(false);
   const soldWrapperRef = useRef(null);
 
-  const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
-  const [cursells,setCurSells]=useState(0)
+  const [cursells,setCurSells]=useState(0);
+  const [curChain,setCurChain]=useState("");
 
   const dispatch = useDispatch(walletStatus);
-  const { status:currentWalletStatus } = useSelector(state => state.walletStatus);
+  const { status:currentWalletStatus, hint:hint } = useSelector(state => state.walletStatus);
 
   useEffect(() => {
+
     if (currentWalletStatus === 'connect') {
       // do somthing for connection
-      dispatch(walletStatus.actions.setConnectId('00000000'));
+      //dispatch(walletStatus.actions.setConnectId(""));
     }
     else if (currentWalletStatus === 'disconnect') {
       // do something for disconnection
+      //dispatch(walletStatus.actions.setConnectId(""));
     }
   }, [currentWalletStatus])
 
-  function addWalletListener() {
-    if (window.ethereum) {
-      window.ethereum.on("accountsChanged", (accounts) => {
-        if (accounts.length > 0) {
-          setWallet(accounts[0]);
-          setStatus("👉🏽 Awesome let's buy some stuff.");
-        } else {
-          setWallet("");
-          setStatus("🦊 Connect to Metamask using the top right button.");
-        }
-      });
-    } else {
-      setStatus(
-        <p>
-          {" 🦊 "}
-          <a target="_blank" href={`https://metamask.io/download.html`} rel="noopener noreferrer">
-            You must install Metamask, a virtual Ethereum wallet, in your browser.
-          </a>
-        </p>
-      );
-    }
-  }
-
-  const connectWalletPressed = async () => {
-      const walletResponse = await connectWallet();
-      setStatus(walletResponse.status);
-      setWallet(walletResponse.address);
-  };
-
-  const onMintPressed = async (amount) => {
-    // eslint-disable-next-line
-    const { success, status } = await mintNFT(amount);
-    setStatus(status);
-  };
-
   useEffect(() => {
     async function fetchWalletAPI() {
-      const { address, status } = await getCurrentWalletConnected();
-
-      setWallet(address);
-      setStatus(status);
-  
-      addWalletListener();
+      if (window.ethereum) {
+        const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+        setCurChain(chainId);
+        console.log(chainId);
+      }
+      CurChainListener();
     }
     fetchWalletAPI()
   }, []);
+
+  function CurChainListener(){
+    if (window.ethereum) {
+      window.ethereum.on('chainChanged', (ChainId) => {
+        setCurChain(ChainId);
+        console.log(ChainId);
+      });
+    }
+  }
+
+  const onMintPressed = async (amount, chain) => {
+    // eslint-disable-next-line
+    const { success, status } = await mintNFT(amount, chain);
+    setStatus(status);
+  };
 
   useEffect(() => {
     const SamuraiContract = new web3.eth.Contract(contractABI, contractAddress);
@@ -114,8 +96,10 @@ const PurchaseSection = ({ wording, ...props }) => {
   }
 
   function handleAddQty() {
-    let currentQty = Math.max(qty+1, 1);
-    setQty(currentQty);
+    if (qty<=49){
+      let currentQty = Math.max(qty+1, 1);
+      setQty(currentQty);
+    }
   }
 
   function handleDecreaseQty() {
@@ -151,17 +135,8 @@ const PurchaseSection = ({ wording, ...props }) => {
                 <p className="hint">{10000 - parseInt(cursells)} REMAINING </p>
               </div>
             </Qty>
-            <BuyButton onClick={() => onMintPressed(qty)}>PURCHASE</BuyButton>
-            <Hint>{ status }</Hint>
-            <ConnectButton onClick={connectWalletPressed}>
-              {walletAddress.length > 0 ? (
-                "Connected: " + String(walletAddress).substring(0, 6) +
-                "..." + String(walletAddress).substring(38)
-              ) : (
-                <span className="font-link">Connect Wallet</span>
-              )}
-            </ConnectButton>
-            <p id="status" className="font-link"> {status} </p>
+            <BuyButton onClick={() => onMintPressed(qty, curChain)}>PURCHASE</BuyButton>
+            <Hint>{ status || hint }</Hint>
           </Purchase>
         </Container>
       </BuyWrapper>
@@ -289,6 +264,7 @@ const Purchase = styled.div`
 
 const Hint = styled.div`
   margin-top: 8px;
+  word-wrap: break-word;
 `
 
 const Price = styled.div`
@@ -337,22 +313,6 @@ const Qty = styled.div`
 `
 
 const BuyButton = styled.button`
-  border: 0;
-  margin-top: 72px;
-  width: 180px;
-  height: 60px;
-  border: 1px solid ${colors.white};
-  background: ${colors.white};
-  color: ${colors.black};
-  font-size: 20px;
-  font-weight: 900;
-  &:active {
-    background: transparent;
-    color: ${colors.white};
-  }
-`
-
-const ConnectButton = styled.button`
   border: 0;
   margin-top: 72px;
   width: 180px;
