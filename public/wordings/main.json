@@ -6,14 +6,14 @@
                 "title": "Oops!",
                 "content": "Did you just click the button? "
             },
-            "dialog2": "You probably have sent all the Cryptopunks back to ancient Japan.",
+            "dialog2": "You must have sent all the Cryptopunks back to ancient Japan.",
             "dialog3": "Get on our first-ever blockchain time machine and meet the Samurai punks!",
             "cover": "/images/homepage-intro-mask.png",
             "samurai": ["/images/samurai/3228.jpg", "/images/samurai/1397.jpg"]
         },
         "news": {
-            "heading": "Join our Samurai Squad and\nfollow up with our latest news.",
-            "banner": ["/images/news/banner01.jpg", "/images/news/banner01.jpg", "/images/news/banner01.jpg"]
+            "heading": "Join our Samurai Squad to\nfollow our latest news.",
+            "banner": ["/images/news/4.jpg", "/images/news/4.jpg", "/images/news/4.jpg"]
         },
         "story": {
             "title": "Samurai punks is composed of elements with different rarity and power values. ",
@@ -30,7 +30,7 @@
                 { "heading": "/images/homepage-card-title-noble.png", "heading_m": "/images/homepage-card-title-noble.png", "background": "#5f806d", "qty": "/images/homepage-card-qty-1600.png", "samurai": "/images/homepage-card-samurai-noble.png", "samurai_m": "/images/homepage-card-samurai-noble.png", "content": "“Only Samurai Aliens, Apes, and Zombies like us can be the leader of the military. All of the human beings are under our domination.”" },
                 { "heading": "/images/homepage-card-title-general.png", "heading_m": "/images/homepage-card-title-general.png", "background": "#e5a896", "qty": "/images/homepage-card-qty-3000.png", "samurai": "/images/homepage-card-samurai-general.png", "samurai_m": "/images/homepage-card-samurai-general.png", "content": "“With great power and wealth, we get to stand on the top of human beings and, most importantly, stay close with the Titans. Your Highness, it’s our honor to dress you around.”" },
                 { "heading": "/images/homepage-card-title-ronine.png", "heading_m": "/images/homepage-card-title-ronine.png", "background": "#959273", "qty": "/images/homepage-card-qty-5000.png", "samurai": "/images/homepage-card-samurai-ronine.png", "samurai_m": "/images/homepage-card-samurai-ronine.png", "content": "“In fighting and in everyday life, we should be determined though calm. Be loyal to the Nobels and be their respected warriors.”" }
-            ]
+          ]
         },
         "purchase": {
             "title": "Chance of drawing each\nclass is varied :",
@@ -42,24 +42,24 @@
             ],
             "price": 0.05,
             "sold": [
-                { "percent": 10, "content": "The Titans will generously grant 5 of their underlings to you on Discord."},
-                { "percent": 20, "content": "The map of power distribution gets unlocked. Check out which Shogunate your Samurai is belonging to."},
-                { "percent": 30, "content": "Time for your Samurai to change different clothes. \nWe enable your samurai \nto change the outfit. \n(Promise that you won’t peek!)"},
-                { "percent": 40, "content": "Online shop is initiated! Come and get some new accessories for your Samurai!"},
-                { "percent": 50, "content": "Yeehaw! Samurai punks has its own game now. Time to check it out."},
-                { "percent": 60, "content": "No more spoiler! Welcome to join our Discord and tell us what you are expecting!"}
+                { "percent": 20, "content": "Check out your Samurai punks on our website!"},
+                { "percent": 30, "content": "SPECIAL AIRDROP for the first 3,000 Samurai punks who travel with us."},
+                { "percent": 40, "content": "CHANGE their CLOTHES! (Promise that you won't peek.)"},
+                { "percent": 60, "content": "Another SPECIAL AIRDROP! Your Samurai punks need something cool."},
+                { "percent": 80, "content": "The MAP of power distribution gets UNLOCKED."},
+                { "percent": 100, "content": "Yeehaw! Samurai punks will develop into a GAME!"}
             ]
         },
         "description": {
-            "title": "Wars break out from time to time. Check out who’s controlling the country.",
+            "title": "Wars break out from time to time. Check out who’s controlling the world.",
             "subtitle": "“Honor may not win power, but it wins respect. And respect earns power.”\nFight for your respective Shogunate!"
         },
         "about": {
-            "title": "Btw, Samurai punks lives \non the Ethereum blockchain. \nThis project is not affiliated with Larva Labs.",
-            "subtitle": "Samurai_punks is a collection of 10,000 unique digital samurai. In 2021, Cryptopunks accidentally travel back to ancient Japan. They belong to different classes, and own various power value, with their legends. ",
+            "title": "Btw, Samurai punks are programmatically transported to Japan and lives on the Ethereum blockchain.",
+            "subtitle": "Samurai punks is a collection of 10,000 unique digital samurai. In 2021, Cryptopunks accidentally travel back to ancient Japan. They belong to different classes, and own various power value, with their legends. ",
             "article": {
                 "title": "The elements of your \nSamurai may be composed of:",
-                "content": "Scenery: Four seasons of Fuji, Hokkaido, Kyoto, Tokyo, Osaka\n\nClothes: Bitokoni, Ethariamu, Binansi, Carudano, Rippuru (size S, M, L, XL)\n\nRace: Human, Zombie, Ape, Alien\n\nEyes: Slanted eyes, Red eyes, Small eyes, Geisha eyes, Alien eyes\n\nHats and hairstyles: Bandana, Bamboo hat, Purple Cap, Green cap, Beanie, Hoodie, Knitted cap, Mohawk Hairstyle, Long hair, Big beard\n\nAccessories: Ethereum earring, Tongue out, Pipe, 3D Glasses, VR, Nerd Glasses, Glasses with chain\n\nPersona: it might be a quote, an accomplishment, or a secret that no one else knows\n\n\n(Note that there are more additional surprises to be unlocked!)"
+                "content": "Scenery: Four seasons of Fuji, Hokkaido, Kyoto, Tokyo, Osaka\n\nClothes: Cherry blossom, Checkered, Chrysanthemum, Cross, Star-print (size S, M, L, XL)\n\nRace: Human, Zombie, Ape, Alien\n\nEyes: Slanted eyes, Red eyes, Small eyes, Geisha eyes, Alien eyes\n\nHats and hairstyles: Bandana, Bamboo hat, Purple Cap, Green cap, Beanie, Hoodie, Knitted cap, Mohawk Hairstyle, Long hair, Big beard\n\nAccessories: Ethereum earring, Tongue out, Pipe, 3D Glasses, VR, Nerd Glasses, Glasses with chain\n\nPersona: it might be a quote, an accomplishment, or a secret that no one else knows\n\n\n(Note that there are more additional surprises to be unlocked!)"
             },
             "socials": [
                 { "icon": "Medium", "link": "https://medium.com/@samuraipunks" },

@@ -11,7 +11,7 @@ import { lockWindow } from '../../utils/methods';
 import { colors } from '../../constants/colors';
 import walletStatus from '../../store/walletStatus';
 import { connectWallet, getCurrentWalletConnected} from "../../utils/Interact.js";
-import { add } from 'ramda';
+import { isAndroid, isIOS } from "react-device-detect";
 
 const Header = () => {
   const wording = _w('header');
@@ -27,8 +27,8 @@ const Header = () => {
   const dispatch = useDispatch(walletStatus);
   const { connectId } = useSelector(state => state.walletStatus);
 
-  console.log(connectId)
-  
+  //console.log(connectId)
+
   useEffect(() => {
     window.addEventListener('scroll', handleWindowScroll);    
     return () => window.removeEventListener('scroll', handleWindowScroll);
@@ -67,6 +67,8 @@ const Header = () => {
     if (window.ethereum) {
       window.ethereum.on("accountsChanged", (accounts) => {
         if (accounts.length > 0) {
+          console.log(accounts)
+          console.log(accounts.length)
           dispatch(walletStatus.actions.connectWallet());
           dispatch(walletStatus.actions.setConnectId('🦊 : ' + accounts[0].slice(0,6) + '...' + accounts[0].slice(-4)));
           dispatch(walletStatus.actions.setHint("👉🏽 Awesome let's buy some stuff."));
@@ -79,20 +81,41 @@ const Header = () => {
     } else {
       dispatch(walletStatus.actions.disconnectWallet());
       dispatch(walletStatus.actions.setConnectId(""));
-      dispatch(walletStatus.actions.setHint(<p>
-        {" 🦊 "}
-        <a target="_blank" href={`https://metamask.io/download.html`} rel="noopener noreferrer">
-          You must install Metamask, a virtual Ethereum wallet, in your browser.
-        </a>
-      </p>));
+      dispatch(walletStatus.actions.setHint(<span>
+        <p>
+          {" 🦊 You must install "} 
+          <a target="_blank" href={`https://metamask.io/download.html`} rel="noopener noreferrer" style={{textDecoration: 'underline'}}>
+            Metamask
+          </a>
+          {"."}
+          <br />
+          {"A virtual Ethereum wallet in your browser."}
+        </p>
+      </span>));
     }
   }
 
   const handleClickWalletButton = async() => {
-    const walletResponse = await connectWallet();
-    dispatch(walletStatus.actions.connectWallet());
-    dispatch(walletStatus.actions.setConnectId('🦊 : ' + walletResponse.address.slice(0,6) + '...' + walletResponse.address.slice(-4)));
-    dispatch(walletStatus.actions.setHint("👉🏽 Awesome let's buy some stuff."));
+
+    if (isAndroid || isIOS){
+      if (!window.ethereum || !window.ethereum.isMetaMask) {
+        window.location = "https://metamask.app.link/dapp/www.samuraipunks.com";
+      } else {
+        const walletResponse = await connectWallet();
+        if (walletResponse.address.length > 0){
+          dispatch(walletStatus.actions.connectWallet());
+          dispatch(walletStatus.actions.setConnectId('🦊 : ' + walletResponse.address.slice(0,6) + '...' + walletResponse.address.slice(-4)));
+          dispatch(walletStatus.actions.setHint("👉🏽 Awesome let's buy some stuff."));
+        }
+      }
+    } else {
+      const walletResponse = await connectWallet();
+      if (walletResponse.address.length > 0){
+        dispatch(walletStatus.actions.connectWallet());
+        dispatch(walletStatus.actions.setConnectId('🦊 : ' + walletResponse.address.slice(0,6) + '...' + walletResponse.address.slice(-4)));
+        dispatch(walletStatus.actions.setHint("👉🏽 Awesome let's buy some stuff."));
+      }
+    }
   }
 
   const handleCloseLinksMenu = () => {
