@@ -26,7 +26,7 @@ const App = ({ wording, Router = BrowserRouter }) => {
   return (
     <Provider store={store}>
       <Helmet>
-        <title>SAMURAI PUNK</title>
+        <title>SAMURAI PUNKS</title>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet"></link>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet"></link>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet"></link>

@@ -30,10 +30,13 @@ export const connectWallet = async () => {
       status: (
         <span>
           <p>
-            {" 🦊 "}
-            <a target="_blank" href={`https://metamask.io/download.html`} rel="noopener noreferrer">
-              You must install Metamask, a virtual Ethereum wallet, in your browser.
+            {" 🦊 You must install "} 
+            <a target="_blank" href={`https://metamask.io/download.html`} rel="noopener noreferrer" style={{textDecoration: 'underline'}}>
+              Metamask
             </a>
+            {"."}
+            <br />
+            {"A virtual Ethereum wallet in your browser."}
           </p>
         </span>
       ),
@@ -71,10 +74,13 @@ export const getCurrentWalletConnected = async () => {
       status: (
         <span>
           <p>
-            {" 🦊 "} 
-            <a target="_blank" href={`https://metamask.io/download.html`} rel="noopener noreferrer">
-              You must install Metamask, a virtual Ethereum wallet, in your browser.
+            {" 🦊 You must install "} 
+            <a target="_blank" href={`https://metamask.io/download.html`} rel="noopener noreferrer" style={{textDecoration: 'underline'}}>
+              Metamask
             </a>
+            {"."}
+            <br />
+            {"A virtual Ethereum wallet in your browser."}
           </p>
         </span>
       ),
@@ -125,9 +131,9 @@ export const mintNFT = async (amount, chain) => {
   const transactionParameters = {
     to: contractAddress, // Required except during contract publications.
     from: window.ethereum.selectedAddress, // must match user's active address.
-    value: ethers.utils.hexlify(ethers.utils.parseEther((amount*0.05).toString())), // Only required to send ether to the recipient from the initiating external account.
+    value: ethers.utils.hexlify(ethers.utils.parseEther((parseInt(amount)*0.05).toString())).slice(2).replace(/^0+/, ''),//ethers.utils.hexlify(ethers.utils.parseEther((parseInt(amount)*0.05).toString())), // Only required to send ether to the recipient from the initiating external account.
     data: SamuraiContract.methods
-      .mintSamurai(amount)
+      .mintSamurai(parseInt(amount))
       .encodeABI(),
     chainId: process.env.REACT_APP_CHAIN_ID,
   };
@@ -143,13 +149,14 @@ export const mintNFT = async (amount, chain) => {
       status: (
         <span>
           <p>
-            {" ✅ Check out your transaction on Etherscan: "}
-            <a target="_blank" href={result.url + 'tx/' + txHash} rel="noopener noreferrer">
-              {result.url + 'tx/' + txHash}
+            {" ✅ Check out your transaction on "}
+            <a target="_blank" href={result.url + 'tx/' + txHash} rel="noopener noreferrer" style={{textDecoration: 'underline'}}>
+              Etherscan
             </a>
-            {" You can check it out on "}
-            <a target="_blank" href={"https://opensea.io/" + txHash} rel="noopener noreferrer">
-              https://opensea.io 
+            <br />
+            {"You can check it out on "}
+            <a target="_blank" href={"https://opensea.io/account"} rel="noopener noreferrer" style={{textDecoration: 'underline'}}>
+              Opensea
             </a>
             {" after a while!"}
           </p>
