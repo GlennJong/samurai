@@ -42,7 +42,7 @@
             ],
             "price": 0.05,
             "sold": [
-                { "percent": 20, "content": "Check out your Samurai punks on our website!"},
+                { "percent": 20, "content": "Check out your <b>Samurai</b> punks on our website!"},
                 { "percent": 30, "content": "SPECIAL AIRDROP for the first 3,000 Samurai punks who travel with us."},
                 { "percent": 40, "content": "CHANGE their CLOTHES! (Promise that you won't peek.)"},
                 { "percent": 60, "content": "Another SPECIAL AIRDROP! Your Samurai punks need something cool."},
