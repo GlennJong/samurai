@@ -14,7 +14,7 @@ import dotenv from 'dotenv'
 import Web3 from 'web3';
 
 dotenv.config()
-const web3 = new Web3(Web3.givenProvider);
+const web3 = new Web3(new Web3.providers.WebsocketProvider(process.env.REACT_APP_NODE));
 const contractABI = require("../../contract-abi.json");
 const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS
 
@@ -47,7 +47,7 @@ const PurchaseSection = ({ wording, ...props }) => {
       if (window.ethereum) {
         const chainId = await window.ethereum.request({ method: 'eth_chainId' });
         setCurChain(chainId);
-        console.log(chainId);
+        //console.log(chainId);
       }
       CurChainListener();
     }
@@ -58,15 +58,15 @@ const PurchaseSection = ({ wording, ...props }) => {
     if (window.ethereum) {
       window.ethereum.on('chainChanged', (ChainId) => {
         setCurChain(ChainId);
-        console.log(ChainId);
+        //console.log(ChainId);
       });
     }
   }
 
   const onMintPressed = async (amount, chain) => {
     // eslint-disable-next-line
-    const { success, status } = await mintNFT(amount, chain);
-    setStatus(status);
+    //const { success, status } = await mintNFT(amount, chain);
+    //setStatus(status);
   };
 
   useEffect(() => {
@@ -79,6 +79,8 @@ const PurchaseSection = ({ wording, ...props }) => {
         setCurSells(event.returnValues.totalSupply);
       }).on('error', console.error);
   }, [])
+
+  //console.log(cursells)
 
   useIntersectionObserver(soldWrapperRef, handleActiveAnimation, {
     root: null,
@@ -113,7 +115,7 @@ const PurchaseSection = ({ wording, ...props }) => {
         <Container>
           <Cover src="/images/homepage-purchase-cover.png" />
           <Purchase>
-            <Img className="logo" src="/images/homepage-purchase-logo.png" />
+            <Img className="logo" src="/images/homepage-purchase-logo-2.png" />
             <p className="info">{ nl2br(wording.title) }</p>
             { wording.items.map((item, i) => 
               <p className="info" key={i}>{item.title} : {item.percent}%</p>
@@ -132,11 +134,11 @@ const PurchaseSection = ({ wording, ...props }) => {
                   onPlusClick={handleAddQty}
                   onMinusClick={handleDecreaseQty}
                 />
-                <p className="hint">{10000 - parseInt(cursells)} REMAINING </p>
+                <p className="hint">{10000 /*- parseInt(cursells)*/} REMAINING </p>
               </div>
             </Qty>
-            <BuyButton onClick={() => onMintPressed(qty, curChain)}>PURCHASE</BuyButton>
-            <Hint>{ status || hint }</Hint>
+            <BuyButton onClick={() => onMintPressed(qty, curChain)}>To Be Announced</BuyButton>
+            <Hint>{ /*status || hint*/ }</Hint>
           </Purchase>
         </Container>
       </BuyWrapper>
@@ -265,6 +267,7 @@ const Purchase = styled.div`
 const Hint = styled.div`
   margin-top: 8px;
   word-wrap: break-word;
+  width: 400px;
 `
 
 const Price = styled.div`

@@ -33,7 +33,7 @@ const HeadingSection = ({ ...props }) => {
     <Root ref={rootRef} {...props}>
       <Wrapper>
         <div className="logo">
-          <Logo active={active} src="/images/homepage-heading-logo.png" alt="" />
+          <Logo active={active} src="/images/homepage-heading-logo-2.png" alt="" />
         </div>
         <div className="background">
           <Background active={active} fill={detectMob() ? "height" : "cover"} src="/images/homepage-heading-background.png" alt="" />

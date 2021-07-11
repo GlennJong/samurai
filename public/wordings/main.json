@@ -7,17 +7,17 @@
                 "content": "Did you just click the button? "
             },
             "dialog2": "You must have sent all the Cryptopunks back to ancient Japan.",
-            "dialog3": "Get on our first-ever blockchain time machine and meet the Samurai punks!",
-            "cover": "/images/homepage-intro-mask.png",
-            "samurai": ["/images/samurai/3228.jpg", "/images/samurai/1397.jpg"]
+            "dialog3": "Get on our first-ever blockchain time machine and meet the Katana N' Samurai!",
+            "cover": "/images/homepage-intro-mask-alt-2.png",
+            "samurai": ["/images/samurai/1.jpg", "/images/samurai/109.jpg"]
         },
         "news": {
-            "heading": "Join our Samurai Squad to\nfollow our latest news.",
-            "banner": ["/images/news/4.jpg", "/images/news/4.jpg", "/images/news/4.jpg"]
+            "heading": "Our team aim to record the historical event \nof blockchain in Ukiyo-e style.",
+            "banner": ["/images/news/6.png", "/images/news/7.png", "/images/news/8.png"]
         },
         "story": {
-            "title": "Samurai punks is composed of elements with different rarity and power values. ",
-            "subtitle": "And they each carry a story wait to share with you. Check out for more details when you get one."
+            "title": "Katana N' Samurai is composed of elements with different rarity and power values. ",
+            "subtitle": "Our Samurai can change clothes, carry Katana, and get ready to fight for their Shogunate in our KNS GAME."
         },
         "gallery": {
             "desktop": [2410, 312, 5142, 129, 3517, 892, 2109, 2961, 83, 73, 1550, 117, 3863, 3862, 89, 109, 184, 3267, 2730, 375, 6865, 5143, 5870, 38, 1910, 1628, 29, 1981, 328, 7280, 350, 21, 6359, 7312, 232, 822, 9, 1380, 3, 1590, 179, 1654, 223, 8236, 9956],
@@ -26,10 +26,10 @@
         "card": {
             "heading": "“May the Samurai be with you!”",
             "cards": [
-                { "heading": "/images/homepage-card-title-1.png", "heading_m": "/images/homepage-card-title-1-mobile.png", "background": "#435762", "qty": "/images/homepage-card-qty-400.png", "samurai": "/images/homepage-card-samurai-titan.png", "samurai_m": "/images/homepage-card-samurai-titan-mobile.png", "content": "“We have no master, no lord. \nNot like the others, we belong to ourselves. It’s not a big deal. Protecting others and upholding justice are our daily lives.”" },
-                { "heading": "/images/homepage-card-title-noble.png", "heading_m": "/images/homepage-card-title-noble.png", "background": "#5f806d", "qty": "/images/homepage-card-qty-1600.png", "samurai": "/images/homepage-card-samurai-noble.png", "samurai_m": "/images/homepage-card-samurai-noble.png", "content": "“Only Samurai Aliens, Apes, and Zombies like us can be the leader of the military. All of the human beings are under our domination.”" },
-                { "heading": "/images/homepage-card-title-general.png", "heading_m": "/images/homepage-card-title-general.png", "background": "#e5a896", "qty": "/images/homepage-card-qty-3000.png", "samurai": "/images/homepage-card-samurai-general.png", "samurai_m": "/images/homepage-card-samurai-general.png", "content": "“With great power and wealth, we get to stand on the top of human beings and, most importantly, stay close with the Titans. Your Highness, it’s our honor to dress you around.”" },
-                { "heading": "/images/homepage-card-title-ronine.png", "heading_m": "/images/homepage-card-title-ronine.png", "background": "#959273", "qty": "/images/homepage-card-qty-5000.png", "samurai": "/images/homepage-card-samurai-ronine.png", "samurai_m": "/images/homepage-card-samurai-ronine.png", "content": "“In fighting and in everyday life, we should be determined though calm. Be loyal to the Nobels and be their respected warriors.”" }
+                { "heading": "/images/homepage-card-title-1.png", "heading_m": "/images/homepage-card-title-1-mobile.png", "background": "#435762", "qty": "/images/homepage-card-qty-400.png", "samurai": "/images/homepage-card-samurai-titan.png", "samurai_m": "/images/homepage-card-samurai-titan-mobile.png", "content": "“Only Samurai Aliens, Apes, and Zombies like us can be the leaders of the military. All other human beings are under our domination.”" },
+                { "heading": "/images/homepage-card-title-noble.png", "heading_m": "/images/homepage-card-title-noble.png", "background": "#5f806d", "qty": "/images/homepage-card-qty-1600.png", "samurai": "/images/homepage-card-samurai-noble.png", "samurai_m": "/images/homepage-card-samurai-noble.png", "content": "“With great power and wealth, we are the top human beings and, most importantly, stay close with the Titans. Your Highness, it’s our honor to protect you from any attack.”" },
+                { "heading": "/images/homepage-card-title-general.png", "heading_m": "/images/homepage-card-title-general.png", "background": "#e5a896", "qty": "/images/homepage-card-qty-3000.png", "samurai": "/images/homepage-card-samurai-general.png", "samurai_m": "/images/homepage-card-samurai-general.png", "content": "“In fighting and in every day life, we should be determined though calm. Be loyal to the Nobles and be their respected warriors.”" },
+                { "heading": "/images/homepage-card-title-ronine.png", "heading_m": "/images/homepage-card-title-ronine.png", "background": "#959273", "qty": "/images/homepage-card-qty-5000.png", "samurai": "/images/homepage-card-samurai-ronine.png", "samurai_m": "/images/homepage-card-samurai-ronine.png", "content": "“We have no master nor lord. \nUnlike the others, we belong to nobody. It’s not a big deal. Protecting others and upholding justice are our daily lives.”" }
           ]
         },
         "purchase": {
@@ -42,12 +42,12 @@
             ],
             "price": 0.05,
             "sold": [
-                { "percent": 20, "content": "Check out your <b>Samurai</b> punks on our website!"},
-                { "percent": 30, "content": "SPECIAL AIRDROP for the first 3,000 Samurai punks who travel with us."},
-                { "percent": 40, "content": "CHANGE their CLOTHES! (Promise that you won't peek.)"},
-                { "percent": 60, "content": "Another SPECIAL AIRDROP! Your Samurai punks need something cool."},
-                { "percent": 80, "content": "The MAP of power distribution gets UNLOCKED."},
-                { "percent": 100, "content": "Yeehaw! Samurai punks will develop into a GAME!"}
+                { "percent": 10, "content": "Every <b>1,000 SOLD</b>, we will invite those Samurai who come to this parallel universe before then, and randomly airdrop <b>10 Ukiyo-e style of blockchain story</b> on Discord."},
+                { "percent": 20, "content": "<b>CHANGE</b> their <b>CLOTHES</b>! (Promise that you won't peek.)"},
+                { "percent": 40, "content": "Let's <b>GET KATANA</b> for our Samurai! We will invite all of the Samurai to join the designing. "},
+                { "percent": 60, "content": "The <b>MAP</b> of power distribution gets <b>UNLOCKED</b>."},
+                { "percent": 80, "content": "<b>SPECIAL AIRDROP</b> decided by <b>YOU</b>."},
+                { "percent": 100, "content": "Yeehaw! Katana N' Samurai will develop into a <b>GAME</b>!"}
             ]
         },
         "description": {
@@ -55,16 +55,16 @@
             "subtitle": "“Honor may not win power, but it wins respect. And respect earns power.”\nFight for your respective Shogunate!"
         },
         "about": {
-            "title": "Btw, Samurai punks are programmatically transported to Japan and lives on the Ethereum blockchain.",
-            "subtitle": "Samurai punks is a collection of 10,000 unique digital samurai. In 2021, Cryptopunks accidentally travel back to ancient Japan. They belong to different classes, and own various power value, with their legends. ",
+            "title": "Btw, Katana N’ Samurai is programmatically transported to Japan and lives on the Ethereum blockchain. This project is not affiliated with Larva Labs.",
+            "subtitle": "Katana N’ Samurai is a collection of 10,000 unique digital samurai. We initiated the blockchain time machine and sent all the Cryptopunks back to ancient Japan. It’s not the year 2021, it’s the year 1700. <b>In this parallel universe, Samurai belong to different Shogunate, carry different levels of power, with their legends</b>. \n\n<b>Ukiyo-e</b> is the way we picture our Katana N’ Samurai. Also, we want to <b>record the history of the blockchain world</b>. \n\nTo make here a sustainable and interactive community, Samurai community will eventually <b>run by a DAO</b>. People who join Samuraiverse will be involved in <b>determining the direction of this project</b>, including <b>designing Katana with the team</b>.\n\nWelcome to Samuraiverse! Join our Discord and follow our Twitter to be part of our community!",
             "article": {
                 "title": "The elements of your \nSamurai may be composed of:",
-                "content": "Scenery: Four seasons of Fuji, Hokkaido, Kyoto, Tokyo, Osaka\n\nClothes: Cherry blossom, Checkered, Chrysanthemum, Cross, Star-print (size S, M, L, XL)\n\nRace: Human, Zombie, Ape, Alien\n\nEyes: Slanted eyes, Red eyes, Small eyes, Geisha eyes, Alien eyes\n\nHats and hairstyles: Bandana, Bamboo hat, Purple Cap, Green cap, Beanie, Hoodie, Knitted cap, Mohawk Hairstyle, Long hair, Big beard\n\nAccessories: Ethereum earring, Tongue out, Pipe, 3D Glasses, VR, Nerd Glasses, Glasses with chain\n\nPersona: it might be a quote, an accomplishment, or a secret that no one else knows\n\n\n(Note that there are more additional surprises to be unlocked!)"
+                "content": "Scenery: Four seasons of Fuji, Hokkaido, Kyoto, Tokyo, Osaka\n\nClothes: Cherry blossom, Checkered, Chrysanthemum, Cross, Star-print (size S, M, L, XL)\n\nRace: Human, Zombie, Ape, Alien\n\nEyes: Confused eyes, Red eyes, Smiley eyes, Geisha eyes, Alien eyes\n\nHats and hairstyles: Bandana, Bamboo hat, Purple Cap, Green cap, Beanie, Hoodie, Knitted cap, Mohawk Hairstyle, Long hair, Big beard\n\nKatana: Will be designed with our community after 40% of our samurai sold\n\nAccessories: Ethereum earring, Tongue out, Pipe, 3D Glasses, VR, Nerd Glasses, Glasses with chain\n\nPersona: it might be a quote, an accomplishment, or a secret that no one else knows\n\n\n(Note that there are more additional surprises to be unlocked!)"
             },
             "socials": [
-                { "icon": "Medium", "link": "https://medium.com/@samuraipunks" },
-                { "icon": "Discord", "link": "https://discord.gg/pkuWTwBy" },
-                { "icon": "Twitter", "link": "https://twitter.com/Samurai_Punks" }
+                { "icon": "Medium", "link": "https://katana-n-samurai.medium.com/" },
+                { "icon": "Discord", "link": "https://discord.gg/VuWcG8TVvd" },
+                { "icon": "Twitter", "link": "https://twitter.com/KatanaNSamurai" }
             ]
         }
     },
@@ -78,9 +78,9 @@
             { "to": "/?to=about", "title": "ABOUT US"}
         ],
         "socials": [
-            { "icon": "Medium", "link": "https://medium.com/@samuraipunks" },
-            { "icon": "Discord", "link": "https://discord.gg/pkuWTwBy" },
-            { "icon": "Twitter", "link": "https://twitter.com/Samurai_Punks" }
+            { "icon": "Medium", "link": "https://katana-n-samurai.medium.com/" },
+            { "icon": "Discord", "link": "https://discord.gg/VuWcG8TVvd" },
+            { "icon": "Twitter", "link": "https://twitter.com/KatanaNSamurai" }
         ]
     }
 }

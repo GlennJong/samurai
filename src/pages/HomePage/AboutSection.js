@@ -20,7 +20,9 @@ const AboutSection = ({ wording, ...props }) => {
         </Heading>
         <Title>{ wording.title }</Title>
         <Line src="/images/icon-line.svg" />
-        <Subtitle>{ wording.subtitle }</Subtitle>
+        <Subtitle>
+          <div className="content" dangerouslySetInnerHTML={{__html: wording.subtitle}}></div>
+        </Subtitle>
         <Article>
           <div className="title">{ wording.article.title }</div>
           <div className="content">{ nl2br(wording.article.content) }</div>
@@ -122,6 +124,15 @@ const Subtitle = styled.div`
   text-align: center;
   ${respondTo.md} {
     margin-bottom: 200px;
+  }
+  .content {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.33;
+    b {
+      font-weight: normal;
+      color: ${colors.highlight};
+    }
   }
 `
 
