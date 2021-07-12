@@ -108,6 +108,10 @@ const PurchaseSection = ({ wording, ...props }) => {
     let currentQty = Math.max(qty-1, 1);
     setQty(currentQty);
   }
+
+  function handleSetQty(value) {
+    setQty(value);
+  }
   
   return (
     <Root {...props}>
@@ -133,6 +137,7 @@ const PurchaseSection = ({ wording, ...props }) => {
                 <QtySelector qty={qty} 
                   onPlusClick={handleAddQty}
                   onMinusClick={handleDecreaseQty}
+                  onQtyInput={handleSetQty}
                 />
                 <p className="hint">{10000 /*- parseInt(cursells)*/} REMAINING </p>
               </div>
@@ -162,11 +167,17 @@ const PurchaseSection = ({ wording, ...props }) => {
   )
 }
 
-const QtySelector = ({ qty, onPlusClick, onMinusClick }) => {
+const QtySelector = ({ qty, onPlusClick, onMinusClick, onQtyInput }) => {
+
+  function handleChangeQty(e) {
+    const value = Number(e.currentTarget.value);
+    (value !== NaN && value >= 0) && onQtyInput(value);
+  }
+  
   return (
     <Selector>
       <QtyButton disabled={qty <= 1} onClick={onMinusClick}><Minus /></QtyButton>
-      <p className="qty">{ qty }</p>
+      <input className="qty" type="text" value={qty} onChange={handleChangeQty} />
       <QtyButton disabled={false} onClick={onPlusClick}><Plus /></QtyButton>
     </Selector>
   )
@@ -334,13 +345,16 @@ const BuyButton = styled.button`
 const Selector = styled.div`
   display: flex;
   .qty {
+    border: 0;
     border-top: 1px solid ${colors.white};
     border-bottom: 1px solid ${colors.white};
-    height: 30px;
+    height: 28px;
     width: 60px;
     line-height: 30px;
     font-size: 24px;
     font-weight: 900;
+    color: ${colors.white};
+    background: transparent;
     text-align: center;
   }
 `
