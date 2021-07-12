@@ -136,7 +136,7 @@ const Header = () => {
       <AutoScrollHelper />
       <Fixeder ref={fixederRef}>
         <Wrapper>
-          <Link className="logo" to="/?to=heading"><img src="/images/header-logo.png" alt=""/></Link>
+          <Link className="logo" to="/?to=heading"><img src="/images/header-logo-2.png" alt=""/></Link>
           <MenuWrapper className="menu" open={open}>
             <LinksList data={wording.links} onLinkClick={handleCloseLinksMenu} />
             <Others>
